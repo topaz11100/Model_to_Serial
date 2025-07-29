@@ -1,0 +1,20 @@
+body {
+    font-family: consolas;
+    padding: 2em;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
