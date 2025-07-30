@@ -1,20 +1,111 @@
+/* Global Styles */
 body {
-    font-family: consolas;
-    padding: 2em;
-    text-align: center;
-    background-color: #f0f0f0;
+    font-family: "Consolas", "맑은 고딕", "Malgun Gothic", monospace;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Container Layouts */
+#serial,
+#model {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+/* Buttons */
 button {
-    font-size: 1.2em;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    padding: 10px 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Input Field */
+input[type="url"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Output Text Areas */
+.output {
+    flex: 1;
+    min-height: 2em;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+}
+
+/* Infer Button */
+#inferbtn {
+    display: block;
+    margin: 0 auto 20px;
+    width: auto;
+}
+
+/* Webcam & Result Display */
+#webcam {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#webcam canvas {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+#result {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+
+    #serial,
+    #model {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input[type="url"],
+    .output {
+        width: 100%;
+    }
 }
