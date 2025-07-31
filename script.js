@@ -10,6 +10,9 @@ const model_txt = document.getElementById("model_process_text");
 const infer_btn = document.getElementById("inferbtn");
 infer_btn.addEventListener('click', infer_btn_click);
 
+const stop_btn = document.getElementById("stopbtn");
+stop_btn.addEventListener('click', stop_btn_click);
+
 const webcam = document.getElementById("webcam");
 
 const result = document.getElementById("result");
@@ -90,16 +93,23 @@ function check_infer_btn()
     if (is_model_loaded && is_serial_connected)
     {
         infer_btn.style.display = 'block';
+        stop_btn.style.display = 'block';
     }
     else
     {
         infer_btn.style.display = 'none';
+        stop_btn.style.display = 'none';
     }
 }
 
 async function infer_btn_click()
 {
     infer_mode = true;
+}
+
+async function stop_btn_click()
+{
+    infer_mode = false;
 }
 
 async function page_init()
@@ -112,17 +122,21 @@ async function page_init()
     window.requestAnimationFrame(no_infer_cam_loop);
 }
 
-async function no_infer_cam_loop()
+async function loop()
 {
     webcam.update();
+
     if (infer_mode)
     {
-        window.requestAnimationFrame(infer_loop);
+        await predict();
+        await ser_send(send_txt);
+        window.requestAnimationFrame(loop);    
     }
     else
     {
+        result.textContent = "";
         window.requestAnimationFrame(no_infer_cam_loop);
-    }
+    }    
 }
 
 async function predict()
@@ -146,20 +160,17 @@ async function predict()
     result.textContent = result_txt;
 }
 
-async function infer_loop()
-{
-    webcam.update();
-    if (infer_mode)
-    {
-        await predict();
-        await ser_send(send_txt);
-        window.requestAnimationFrame(infer_loop);
-    }
-    else
-    {
-        result.textContent = "";
-        window.requestAnimationFrame(no_infer_cam_loop);
-    }
-}
-
 page_init();
+
+window.addEventListener("beforeunload", () => {
+    if (writer) {
+        writer.close();
+    }
+    if (port) {
+        // close()는 Promise를 반환하지만, unload 중에는 await하지 않고
+        // 즉시 호출만 해도 대체로 닫히도록 동작합니다.
+        port.close().catch(err => {
+            console.warn("Error closing serial port on unload:", err);
+        });
+    }
+});
