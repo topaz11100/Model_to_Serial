@@ -119,30 +119,30 @@ async function page_init()
     await cam.play();
     webcam.appendChild(cam.canvas);
 
-    window.requestAnimationFrame(no_infer_cam_loop);
+    window.requestAnimationFrame(loop);
 }
 
 async function loop()
 {
-    webcam.update();
+    cam.update();
 
     if (infer_mode)
     {
         await predict();
-        await ser_send(send_txt);
-        window.requestAnimationFrame(loop);    
+        await ser_send(send_txt);    
     }
     else
     {
         result.textContent = "";
-        window.requestAnimationFrame(no_infer_cam_loop);
-    }    
+    }
+    
+    window.requestAnimationFrame(loop);
 }
 
 async function predict()
 {
     let result_txt = "";
-    const pred = await model.predict(webcam.canvas, true);
+    const pred = await model.predict(cam.canvas);
     let max_prob = 0, max_prob_name = null;
     for (let i = 0; i < label_count; i++)
     {
