@@ -5,37 +5,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <title>TM model inference - Serial send</title>
+    <title>TM image inference - Serial send</title>
     
     <link rel="stylesheet" href="style.css"/>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="script.js" defer></script>
+    <script type="module" src="./js/main.js" defer></script>
 </head>
 
 <body>
-    <h1>Teachable Machine Image Model - Serial</h1>
+    <h1>TM image inference - Serial send</h1>
     
-    <div id="serial">
-        <button type="button" id="serbtn">시리얼 연결</button>
-        <div id="serial_process_text" class="output"></div>
-    </div>
-
-    <div id="model">
-        <input type="url" id="model_url" placeholder="모델 url 입력" required>
-        <button type="button" id="mdlbtn">불러오기</button>
-        <div id="model_process_text" class="output"></div>
+    <div>
+        <div>
+            <button type="button" id="ser_on_btn" >시리얼 연결</button>
+            <button type="button" id="ser_off_btn">시리얼 해제</button>
+        </div>
+        <strong id="ser_status_text" class="output"></strong>
     </div>
 
     <div>
-        <button type="button" id="inferbtn" style="display: none;">모델 작동 및 시리얼 전송</button>
-        <button type="button" id="stopbtn" style="display: none;">작동 중지</button>
+        <div>
+            <input type="url" id="model_url" placeholder="모델 url 입력" required>
+            <button type="button" id="model_load_btn">불러오기</button>
+        </div>
+        <strong id="model_status_text" class="output"></strong>
     </div>
 
-    <div id="webcam"></div>
+    <div>
+        <div id="cam"></div>
+        <strong id="cam_status_text" class="output"></strong>
+        <div>
+            <button type="button" id="cam_on_btn" >웹캠 연결</button>
+            <button type="button" id="cam_off_btn">웹캠 해제</button>
+        </div>
+    </div>
     
-    <div id="result"></div>
+    <div id="infer" style="display: none;">
+        <div>
+            <button type="button" id="infer_btn">모델 작동 및 시리얼 전송</button>
+            <button type="button" id="stop_btn">작동 중지</button>
+        </div>
+        <strong id="result" class="output"></strong>
+    </div>
+    
 </body>
 
 </html>

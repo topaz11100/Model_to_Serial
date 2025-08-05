@@ -14,11 +14,11 @@ void loop()
     char r = Rx::r_char('?');
     switch(r)
     {
-        case '1':
-            led.write(true);
-            break;
         case '0':
             led.write(false);
+            break;
+        case '1':
+            led.write(true);
             break;
         default:
             break;
