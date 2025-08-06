@@ -20,23 +20,20 @@
     
     <div>
         <strong id="ser_status_text" class="output">연결 해제</strong>
-        <div>
-            <button type="button" id="ser_on_btn" >시리얼 연결</button>
-            <button type="button" id="ser_off_btn">시리얼 해제</button>
-        </div>
+        <button type="button" id="ser_btn" class="on_btn">시리얼 연결</button>
     </div>
 
     <div>
         <div>
             <input type="url" id="model_url" placeholder="모델 url 입력" required>
-            <button type="button" id="model_load_btn">불러오기</button>
+            <button type="button" id="model_load_btn" class="on_btn">불러오기</button>
         </div>
         <strong id="model_status_text" class="output">모델 없음</strong>
 
         <div id="label_map_cont" style="display: none;">
             <div id="label_send_map"></div>
             <div> 
-                <button type="button" id="label_send_map_set_btn">전송 값 설정</button>
+                <button type="button" id="label_send_map_set_btn" class="on_btn">전송 값 설정</button>
                 <strong id="label_send_map_status_text" class="output"></strong>
             </div>
         </div>
@@ -45,17 +42,11 @@
     <div>
         <div id="cam_cont"></div>
         <strong id="cam_status_text" class="output">연결 해제</strong>
-        <div>
-            <button type="button" id="cam_on_btn" >웹캠 연결</button>
-            <button type="button" id="cam_off_btn">웹캠 해제</button>
-        </div>
+        <button type="button" id="cam_btn" class="on_btn">웹캠 연결</button>
     </div>
     
     <div id="infer" style="display: none;">
-        <div>
-            <button type="button" id="infer_btn">모델 작동 및 시리얼 전송</button>
-            <button type="button" id="stop_btn">작동 중지</button>
-        </div>
+        <button type="button" id="infer_btn" class="on_btn">모델 작동 및 시리얼 전송</button>
         <strong id="result" class="output"></strong>
     </div>
     

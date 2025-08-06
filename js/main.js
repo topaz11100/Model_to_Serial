@@ -1,19 +1,17 @@
 import { model_load_btn_click, label_send_map_set_btn_click } from './model_load.js'
-import { cam, cam_on_btn_click, cam_off_btn_click } from './cam.js';
-import { ser_send, closePort, ser_on_btn_click, ser_off_btn_click } from './serial.js'
+import { cam, cam_btn_click } from './cam.js';
+import { ser_send, closePort, ser_btn_click} from './serial.js'
 import { infer_cond } from './infer_cond.js';
-import { predict, infer_btn_click, stop_btn_click } from './infer.js';
+import { predict, infer_btn_click} from './infer.js';
 
 export const UI =
 {
     // 시리얼 관련
-    ser_on_btn: document.getElementById("ser_on_btn"),
-    ser_off_btn: document.getElementById("ser_off_btn"),
+    ser_btn: document.getElementById("ser_btn"),
     ser_status_text: document.getElementById("ser_status_text"),
 
     // 웹캠 관련
-    cam_on_btn: document.getElementById("cam_on_btn"),
-    cam_off_btn: document.getElementById("cam_off_btn"),
+    cam_btn: document.getElementById("cam_btn"),
     cam_status_text: document.getElementById("cam_status_text"),
     cam_cont: document.getElementById("cam_cont"),
 
@@ -28,22 +26,15 @@ export const UI =
     
     // 추론 및 결과
     infer_btn: document.getElementById("infer_btn"),
-    stop_btn: document.getElementById("stop_btn"),
     result: document.getElementById("result"),
     infer: document.getElementById("infer")
 };
 
+UI.ser_btn.addEventListener('click', ser_btn_click);
+UI.cam_btn.addEventListener('click', cam_btn_click);
 UI.model_load_btn.addEventListener('click', model_load_btn_click);
 UI.label_send_map_set_btn.addEventListener('click', label_send_map_set_btn_click);
-
-UI.cam_on_btn.addEventListener('click', cam_on_btn_click);
-UI.cam_off_btn.addEventListener('click', cam_off_btn_click);
-
-UI.ser_on_btn.addEventListener('click', ser_on_btn_click);
-UI.ser_off_btn.addEventListener('click', ser_off_btn_click);
-
 UI.infer_btn.addEventListener('click', infer_btn_click);
-UI.stop_btn.addEventListener('click', stop_btn_click);
 
 async function loop()
 {

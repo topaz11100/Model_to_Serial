@@ -26,12 +26,23 @@ async function predict()
 
 function infer_btn_click()
 {
-    infer_cond.set_stop(false);
+    UI.cam_btn.disabled = true;
+    if (infer_cond.get_stop()){
+        infer_cond.set_stop(false);
+        updateshape(false);
+    }
+    else {
+        infer_cond.set_stop(true);
+        updateshape(true);
+    }
+    UI.cam_btn.disabled = false;
+
+    function updateshape(is_stop)
+    {
+        UI.infer_btn.textContent = is_stop ? "추론 시작" : "중지";
+        UI.infer_btn.classList.toggle("off_btn", !is_stop);
+        UI.infer_btn.classList.toggle("on_btn", is_stop);
+    }
 }
 
-function stop_btn_click()
-{
-    infer_cond.set_stop(true);
-}
-
-export { predict, infer_btn_click, stop_btn_click };
+export { predict, infer_btn_click };
