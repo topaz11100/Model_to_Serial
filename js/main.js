@@ -24,6 +24,7 @@ export const UI =
     label_map_cont: document.getElementById("label_map_cont"),
     label_send_map_cont: document.getElementById("label_send_map"),
     label_send_map_set_btn: document.getElementById("label_send_map_set_btn"),
+    label_send_map_status_text: document.getElementById("label_send_map_status_text"),
     
     // 추론 및 결과
     infer_btn: document.getElementById("infer_btn"),

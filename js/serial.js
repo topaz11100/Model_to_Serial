@@ -1,22 +1,22 @@
 import { UI } from './main.js';
 import { infer_cond } from './infer_cond.js';
 
-let port, ser_send_end, writer; 
+let port, ser_send_end, encoder, writer; 
 
 async function ser_on_btn_click()
 {
     if (infer_cond.get_ser())
         return;
 
-    UI.ser_status_text.textContent = "연결 중";
     infer_cond.set_ser(false);
+    UI.ser_status_text.textContent = "연결 중";
 
     try
     {
         port = await navigator.serial.requestPort();
         await port.open({ baudRate: 9600 });
         
-        const encoder = new TextEncoderStream();
+        encoder = new TextEncoderStream();
         ser_send_end = encoder.readable.pipeTo(port.writable);
         writer = encoder.writable.getWriter();
 
@@ -47,21 +47,30 @@ async function ser_off_btn_click()
     }
     catch (err)
     {
-        UI.ser_status_text.textContent = "해제 실패";
+        UI.ser_status_text.textContent = err;
     }
 }
 
 // 자원 해제 함수
 async function closePort()
 {
-    if (writer)
+    if (writer) 
     {
-        await writer.close(); // writer 닫기
+        await writer.close();
         writer = null;
     }
-    if (port)
+
+    if (ser_send_end)
     {
-        await port.close(); // 포트 닫기
+        await ser_send_end.catch(() => { }); // pipeTo 에러 무시
+        ser_send_end = null;
+    }
+
+    encoder = null;
+
+    if (port) 
+    {
+        await port.close();
         port = null;
     }
 }

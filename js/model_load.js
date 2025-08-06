@@ -15,8 +15,9 @@ async function model_load(url)
 
 async function model_load_btn_click()
 {
-    UI.model_status_text.textContent = "가져오는 중";
     infer_cond.set_model(false);
+    UI.model_status_text.textContent = "가져오는 중";
+    UI.label_map_cont.style.display = 'none';
 
     try
     {
@@ -28,7 +29,6 @@ async function model_load_btn_click()
     }
     catch (err)
     {
-        UI.label_map_cont.style.display = 'none';
         UI.model_status_text.textContent = err.message;
     }
 }
@@ -61,6 +61,9 @@ async function label_send_map_set_btn_click()
         const val = document.getElementById(`val_${i}`).value;
         label_send_map.set(labels[i], val);
     }
+
+    UI.label_send_map_status_text.textContent = "설정 완료";
+    setTimeout(() => { UI.label_send_map_status_text.textContent = ""; }, 500);
 }
 
 export { model, labels, label_count, label_send_map, model_load_btn_click, label_send_map_set_btn_click };

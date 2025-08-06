@@ -8,8 +8,9 @@ async function cam_on_btn_click()
     if (infer_cond.get_cam())
         return;
 
-    UI.cam_status_text.textContent = "웹캠 연결 중";
     infer_cond.set_cam(false);
+    UI.cam_status_text.textContent = "웹캠 연결 중";
+    
     try
     {
         cam = new tmImage.Webcam(200, 200, true); // width, height, flip
