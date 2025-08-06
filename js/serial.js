@@ -20,7 +20,7 @@ async function ser_btn_click() {
             return;
 
         infer_cond.set_ser(false);
-        UI.ser_status_text.textContent = "연결 중";
+        UI.ser_status_text.textContent = "Connecting ...";
 
         try {
             port = await navigator.serial.requestPort();
@@ -30,7 +30,7 @@ async function ser_btn_click() {
             ser_send_end = encoder.readable.pipeTo(port.writable);
             writer = encoder.writable.getWriter();
 
-            UI.ser_status_text.textContent = "시리얼 연결 완료"
+            UI.ser_status_text.textContent = "Serial Connected"
             infer_cond.set_ser(true);
         }
         catch (err) {
@@ -46,7 +46,7 @@ async function ser_btn_click() {
         infer_cond.set_ser(false);
         try {
             await closePort();
-            UI.ser_status_text.textContent = "연결 해제";
+            UI.ser_status_text.textContent = "Disconnected";
         }
         catch (err) {
             UI.ser_status_text.textContent = err;
@@ -54,7 +54,7 @@ async function ser_btn_click() {
     }
 
     function updateshape(is_on) {
-        UI.ser_btn.textContent = is_on ? "시리얼 해제" : "시리얼 연결";
+        UI.ser_btn.textContent = is_on ? "Disconnect" : "Connect Serial";
         UI.ser_btn.classList.toggle("off_btn", is_on);
         UI.ser_btn.classList.toggle("on_btn", !is_on);
     }

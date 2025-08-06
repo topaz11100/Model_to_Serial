@@ -21,7 +21,7 @@ async function cam_btn_click()
             return;
 
         infer_cond.set_cam(false);
-        UI.cam_status_text.textContent = "웹캠 연결 중";
+        UI.cam_status_text.textContent = "Connecting ...";
 
         try {
             cam = new tmImage.Webcam(200, 200, true); // width, height, flip
@@ -29,7 +29,7 @@ async function cam_btn_click()
             await cam.play();
             UI.cam_cont.appendChild(cam.canvas);
 
-            UI.cam_status_text.textContent = "웹캠 연결 완료";
+            UI.cam_status_text.textContent = "WebCam Connected";
             infer_cond.set_cam(true);
             window.requestAnimationFrame(loop);
         }
@@ -44,7 +44,7 @@ async function cam_btn_click()
             return;
 
         infer_cond.set_cam(false);
-        UI.cam_status_text.textContent = "웹캠 연결 해제";
+        UI.cam_status_text.textContent = "Disconnected";
 
         cam.stop();
         while (UI.cam_cont.firstChild)
@@ -53,7 +53,7 @@ async function cam_btn_click()
 
     function updateshape(is_on)
     {
-        UI.cam_btn.textContent = is_on ? "웹캠 해제" : "웹캠 연결";
+        UI.cam_btn.textContent = is_on ? "Disconnect" : "Connect WebCam";
         UI.cam_btn.classList.toggle("off_btn", is_on);
         UI.cam_btn.classList.toggle("on_btn", !is_on);
     }

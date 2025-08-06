@@ -54,6 +54,7 @@ async function loop()
 
 // 페이지 떠날 때 자원 정리
 window.addEventListener("beforeunload", async () => {
+    cam.stop();
     await closePort();
 });
 

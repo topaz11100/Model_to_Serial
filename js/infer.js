@@ -39,7 +39,7 @@ function infer_btn_click()
 }
 
 function updateshape(is_stop) {
-    UI.infer_btn.textContent = is_stop ? "추론 시작" : "중지";
+    UI.infer_btn.textContent = is_stop ? "Inference & Send" : "Pause";
     UI.infer_btn.classList.toggle("off_btn", !is_stop);
     UI.infer_btn.classList.toggle("on_btn", is_stop);
 }

@@ -3,10 +3,16 @@
     box-sizing: border-box;
 }
 
+.chakra-petch-regular {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     padding: 20px;
-    font-family: 'Malgun Gothic', 'Consolas', monospace;
+    font-family: "Chakra Petch", sans-serif, monospace;
     background-color: #f5f5f5;
     color: #333;
 }
@@ -16,44 +22,81 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Section wrappers */
-body>div {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+div {
+    width: fit-content;
+    background-color: #e2f7d9;
 }
+
+.vertical_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin: 5px;
+}
+
+.horizontal_cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin: 10px;
+}
+
+.horizontal_cont2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin: 2px 0px;
+}
+
+#label_send_map {
+    align-items: flex-start;
+}
+
 
 /* Status text */
 .output {
     display: block;
-    margin-bottom: 10px;
+    margin: 4px;
     font-weight: bold;
     color: #555;
 }
 
-/* Button groups */
-body>div>div {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 10px;
-}
 
 button {
     padding: 8px 16px;
+    margin: 5px;
     font-size: 14px;
+    font-family: inherit;
     border: none;
     border-radius: 4px;
-    background-color: #0066cc;
-    color: #fff;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-button:hover {
+.on_btn {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+.on_btn:hover {
     background-color: #005bb5;
+}
+
+.off_btn {
+    background-color: #cc1800;
+    color: #fff;
+}
+
+.off_btn:hover {
+    background-color: #b53300;
+}
+
+#label_send_map_set_btn {
+    margin: 2px 0px;
 }
 
 /* Inputs */
@@ -61,6 +104,7 @@ input[type="url"],
 input[type="text"] {
     padding: 8px 12px;
     font-size: 14px;
+    font-family: inherit;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 200px;
@@ -70,45 +114,6 @@ input[type="text"] {
 #cam_cont {
     width: 200px;
     height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     margin-bottom: 10px;
     overflow: hidden;
-}
-
-/* Label mapping area */
-#label_map_cont {
-    margin-top: 10px;
-}
-
-#label_send_map {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-#label_send_map div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#label_send_map div strong {
-    width: 80px;
-}
-
-/* Infer section */
-#infer {
-    text-align: center;
-}
-
-#infer>div {
-    justify-content: center;
-}
-
-#result {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #000;
 }

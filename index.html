@@ -5,49 +5,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <title>TM 이미지 모델 추론 - 시리얼 전송</title>
-    
+    <title>TM to Serial</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="module" src="./js/main.js" defer></script>
-    
 </head>
 
 <body>
-    <h1>TM 이미지 모델 추론 - 시리얼 전송</h1>
+    <h1>TM image to Serial</h1>
     
     <div>
-        <strong id="ser_status_text" class="output">연결 해제</strong>
-        <button type="button" id="ser_btn" class="on_btn">시리얼 연결</button>
-    </div>
-
-    <div>
-        <div>
-            <input type="url" id="model_url" placeholder="모델 url 입력" required>
-            <button type="button" id="model_load_btn" class="on_btn">불러오기</button>
+        <div class="vertical_cont">
+            <strong id="ser_status_text" class="output">Disconnected</strong>
+            <button id="ser_btn" class="on_btn">Connect Serial</button>
         </div>
-        <strong id="model_status_text" class="output">모델 없음</strong>
 
-        <div id="label_map_cont" style="display: none;">
-            <div id="label_send_map"></div>
-            <div> 
-                <button type="button" id="label_send_map_set_btn" class="on_btn">전송 값 설정</button>
-                <strong id="label_send_map_status_text" class="output"></strong>
+        <div class="vertical_cont">
+            <div class="horizontal_cont">
+                <input type="url" id="model_url" placeholder="TM image model url" required>
+                <button id="model_load_btn" class="on_btn">Model Load</button>
+            </div>
+            <strong id="model_status_text" class="output">No Model</strong>
+
+            <div id="label_map_cont" style="display: none;" class="vertical_cont">
+                <div id="label_send_map" class="vertical_cont">
+                </div>
+                <div class="horizontal_cont"> 
+                    <button id="label_send_map_set_btn" class="on_btn">Set Send Value</button>
+                    <strong id="label_send_map_status_text" class="output"></strong>
+                </div>
             </div>
         </div>
     </div>
 
     <div>
-        <div id="cam_cont"></div>
-        <strong id="cam_status_text" class="output">연결 해제</strong>
-        <button type="button" id="cam_btn" class="on_btn">웹캠 연결</button>
-    </div>
-    
-    <div id="infer" style="display: none;">
-        <button type="button" id="infer_btn" class="on_btn">모델 작동 및 시리얼 전송</button>
-        <strong id="result" class="output"></strong>
+        <div>
+            <div id="cam_cont" class="vertical_cont"></div>
+            <strong id="cam_status_text" class="output">Disconnect</strong>
+            <button type="button" id="cam_btn" class="on_btn">Connect WebCam</button>
+        </div>
+        
+        <div id="infer" style="display: none;">
+            <button type="button" id="infer_btn" class="on_btn">Inference & Send</button>
+            <strong id="result" class="output"></strong>
+        </div>
     </div>
     
 </body>
