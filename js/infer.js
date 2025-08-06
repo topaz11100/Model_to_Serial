@@ -3,9 +3,6 @@ import { cam } from './cam.js';
 import { infer_cond } from './infer_cond.js';
 import { model, label_count, label_send_map } from './model_load.js';
 
-UI.infer_btn.addEventListener('click', infer_btn_click);
-UI.stop_btn.addEventListener('click', stop_btn_click);
-
 async function predict()
 {
     const pred = await model.predict(cam.canvas);
@@ -37,4 +34,4 @@ function stop_btn_click()
     infer_cond.set_stop(true);
 }
 
-export { predict };
+export { predict, infer_btn_click, stop_btn_click };

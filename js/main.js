@@ -1,7 +1,8 @@
-import { cam, frame_id } from './cam.js';
-import { ser_send, closePort } from './serial.js'
+import { model_load_btn_click, label_send_map_set_btn_click } from './model_load.js'
+import { cam, frame_id, cam_on_btn_click, cam_off_btn_click } from './cam.js';
+import { ser_send, closePort, ser_on_btn_click, ser_off_btn_click } from './serial.js'
 import { infer_cond } from './infer_cond.js';
-import { predict } from './infer.js';
+import { predict, infer_btn_click, stop_btn_click } from './infer.js';
 
 export const UI =
 {
@@ -30,6 +31,18 @@ export const UI =
     result: document.getElementById("result"),
     infer: document.getElementById("infer")
 };
+
+UI.model_load_btn.addEventListener('click', model_load_btn_click);
+UI.label_send_map_set_btn.addEventListener('click', label_send_map_set_btn_click);
+
+UI.cam_on_btn.addEventListener('click', cam_on_btn_click);
+UI.cam_off_btn.addEventListener('click', cam_off_btn_click);
+
+UI.ser_on_btn.addEventListener('click', ser_on_btn_click);
+UI.ser_off_btn.addEventListener('click', ser_off_btn_click);
+
+UI.infer_btn.addEventListener('click', infer_btn_click);
+UI.stop_btn.addEventListener('click', stop_btn_click);
 
 async function loop()
 {

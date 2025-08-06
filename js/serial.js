@@ -1,9 +1,6 @@
 import { UI } from './main.js';
 import { infer_cond } from './infer_cond.js';
 
-UI.ser_on_btn.addEventListener('click', ser_on_btn_click);
-UI.ser_off_btn.addEventListener('click', ser_off_btn_click);
-
 let port, ser_send_end, writer; 
 
 async function ser_on_btn_click()
@@ -30,8 +27,6 @@ async function ser_on_btn_click()
     {
         UI.ser_status_text.textContent = err.message;
     }
-
-    check_infer_btn();
 }
 
 async function ser_send(txt)
@@ -71,4 +66,4 @@ async function closePort()
     }
 }
 
-export { ser_send, closePort };
+export { ser_on_btn_click, ser_send, ser_off_btn_click, closePort };

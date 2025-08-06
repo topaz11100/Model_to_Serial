@@ -1,9 +1,6 @@
 import { UI } from './main.js';
 import { infer_cond } from './infer_cond.js'
 
-UI.model_load_btn.addEventListener('click', model_load_btn_click);
-UI.label_send_map_set_btn.addEventListener('click', label_send_map_set_btn_click);
-
 let label_send_map = new Map();
 let model, labels, label_count;
 
@@ -55,6 +52,9 @@ async function label_send_map_load()
 
 async function label_send_map_set_btn_click()
 {
+    if (!infer_cond.is_stop())
+        return;
+    
     label_send_map.clear();
     for (let i = 0; i < label_count; i += 1)
     {
@@ -63,4 +63,4 @@ async function label_send_map_set_btn_click()
     }
 }
 
-export { model, labels, label_count, label_send_map };
+export { model, labels, label_count, label_send_map, model_load_btn_click, label_send_map_set_btn_click };

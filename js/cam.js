@@ -1,9 +1,6 @@
 import { UI, loop } from './main.js';
 import { infer_cond } from './infer_cond.js';
 
-UI.cam_on_btn.addEventListener('click', cam_on_btn_click);
-UI.cam_off_btn.addEventListener('click', cam_off_btn_click);
-
 let cam, frame_id = null;
 
 async function cam_on_btn_click()
@@ -44,4 +41,4 @@ async function cam_off_btn_click()
         UI.cam_cont.removeChild(UI.cam_cont.firstChild);
 }
 
-export { cam, frame_id };
+export { cam, frame_id, cam_on_btn_click, cam_off_btn_click };
