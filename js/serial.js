@@ -31,7 +31,8 @@ async function ser_on_btn_click()
 
 async function ser_send(txt)
 {
-    await writer.write(txt);
+    if (writer)
+        await writer.write(txt);
 }
 
 async function ser_off_btn_click()

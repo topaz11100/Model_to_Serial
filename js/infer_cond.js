@@ -13,9 +13,14 @@ class infer_condition
     check_infer()
     {
         if (this._model && this._ser && this._cam)
+        {
             UI.infer.style.display = 'block';
+        }
         else
+        {
+            this._stop = true;
             UI.infer.style.display = 'none';
+        }
     }
 
     set_model(boolean)
@@ -44,6 +49,11 @@ class infer_condition
     get_cam()
     {
         return this._cam;
+    }
+
+    get_infer()
+    {
+        return this._model && this._ser && this._cam;
     }
 
     set_stop(boolean)

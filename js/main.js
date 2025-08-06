@@ -1,5 +1,5 @@
 import { model_load_btn_click, label_send_map_set_btn_click } from './model_load.js'
-import { cam, frame_id, cam_on_btn_click, cam_off_btn_click } from './cam.js';
+import { cam, cam_on_btn_click, cam_off_btn_click } from './cam.js';
 import { ser_send, closePort, ser_on_btn_click, ser_off_btn_click } from './serial.js'
 import { infer_cond } from './infer_cond.js';
 import { predict, infer_btn_click, stop_btn_click } from './infer.js';
@@ -49,14 +49,16 @@ async function loop()
 {
     if (infer_cond.get_cam())
         cam.update();
+    else
+        return;
 
-    if (!infer_cond.is_stop())
+    if (infer_cond.get_infer() && !infer_cond.is_stop())
     {
         let send_txt = await predict();
         await ser_send(send_txt);
     }
 
-    frame_id = window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);
 }
 
 // 페이지 떠날 때 자원 정리

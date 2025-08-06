@@ -1,7 +1,7 @@
 import { UI, loop } from './main.js';
 import { infer_cond } from './infer_cond.js';
 
-let cam, frame_id = null;
+let cam;
 
 async function cam_on_btn_click()
 {
@@ -20,7 +20,7 @@ async function cam_on_btn_click()
 
         UI.cam_status_text.textContent = "웹캠 연결 완료";
         infer_cond.set_cam(true);
-        frame_id = window.requestAnimationFrame(loop);
+        window.requestAnimationFrame(loop);
     }
     catch(err)
     {
@@ -33,13 +33,12 @@ async function cam_off_btn_click()
     if (!infer_cond.get_cam())
         return;
 
-    UI.cam_status_text.textContent = "웹캠 연결 해제";
     infer_cond.set_cam(false);
-    cancelAnimationFrame(frame_id);
-
+    UI.cam_status_text.textContent = "웹캠 연결 해제";
+    
     cam.stop();
     while (UI.cam_cont.firstChild)
         UI.cam_cont.removeChild(UI.cam_cont.firstChild);
 }
 
-export { cam, frame_id, cam_on_btn_click, cam_off_btn_click };
+export { cam, cam_on_btn_click, cam_off_btn_click };
