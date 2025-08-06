@@ -6,7 +6,7 @@ let cam;
 async function cam_btn_click()
 {
     UI.cam_btn.disabled = true;
-    if (infer_cond.get_ser()) {
+    if (infer_cond.get_cam()) {
         off();
         updateshape(false);
     }
