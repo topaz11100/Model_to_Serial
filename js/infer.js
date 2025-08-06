@@ -1,28 +1,40 @@
-const infer_btn = document.getElementById("infer_btn");
-infer_btn.addEventListener('click', infer_btn_click);
+import { UI } from './main.js';
+import { cam } from './cam.js';
+import { infer_cond } from './infer_cond.js';
+import { model, label_count, label_send_map } from './model_load.js';
 
-const stop_btn = document.getElementById("stop_btn");
-stop_btn.addEventListener('click', stop_btn_click);
-
-const result = document.getElementById("result");
+UI.infer_btn.addEventListener('click', infer_btn_click);
+UI.stop_btn.addEventListener('click', stop_btn_click);
 
 async function predict()
 {
-    let result_txt = "";
     const pred = await model.predict(cam.canvas);
-    let max_prob = 0, max_prob_name = null;
+
+    let result_txt = "", result_label = null, result_prob = 0;
     for (let i = 0; i < label_count; i += 1)
     {
-        let label_name = pred[i].className, prob = pred[i].probability.toFixed(2);
-        const temp_pred = label_name + ": " + prob + " ";
-        result_txt += temp_pred;
-
-        if (prob > max_prob)
+        let label_i = pred[i].className, prob_i = pred[i].probability.toFixed(2);
+        result_txt += `${label_i}:${prob_i} `;
+        
+        if (prob_i > result_prob)
         {
-            max_prob = prob;
-            max_prob_name = label_name;
+            result_prob = prob_i;
+            result_label = label_i;
         }
     }
-    send_txt = max_prob_name.slice(0, 1);
-    result.textContent = result_txt;
+    UI.result.textContent = result_txt;
+
+    return label_send_map.get(result_label);
 }
+
+function infer_btn_click()
+{
+    infer_cond.set_stop(false);
+}
+
+function stop_btn_click()
+{
+    infer_cond.set_stop(true);
+}
+
+export { predict };

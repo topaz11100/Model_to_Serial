@@ -1,16 +1,17 @@
-const ser_on_btn = document.getElementById("ser_on_btn");
-ser_on_btn.addEventListener('click', ser_on_btn_click);
+import { UI } from './main.js';
+import { infer_cond } from './infer_cond.js';
 
-const ser_off_btn = document.getElementById("ser_off_btn");
-ser_off_btn.addEventListener('click', ser_off_btn_click);
-
-const ser_status_text = document.getElementById("ser_status_text");
+UI.ser_on_btn.addEventListener('click', ser_on_btn_click);
+UI.ser_off_btn.addEventListener('click', ser_off_btn_click);
 
 let port, ser_send_end, writer; 
 
 async function ser_on_btn_click()
 {
-    ser_txt.textContent = "연결 중";
+    if (infer_cond.get_ser())
+        return;
+
+    UI.ser_status_text.textContent = "연결 중";
     infer_cond.set_ser(false);
 
     try
@@ -22,12 +23,12 @@ async function ser_on_btn_click()
         ser_send_end = encoder.readable.pipeTo(port.writable);
         writer = encoder.writable.getWriter();
 
-        ser_txt.textContent = "시리얼 연결 완료"
+        UI.ser_status_text.textContent = "시리얼 연결 완료"
         infer_cond.set_ser(true);
     }
     catch (err)
     {
-        ser_txt.textContent = err.message;
+        UI.ser_status_text.textContent = err.message;
     }
 
     check_infer_btn();
@@ -40,15 +41,18 @@ async function ser_send(txt)
 
 async function ser_off_btn_click()
 {
+    if (!infer_cond.get_ser())
+        return;
+
     infer_cond.set_ser(false);
     try
     {
         await closePort();
-        ser_txt.textContent = "연결 해제";
+        UI.ser_status_text.textContent = "연결 해제";
     }
     catch (err)
     {
-        ser_txt.textContent = "해제 실패";
+        UI.ser_status_text.textContent = "해제 실패";
     }
 }
 
@@ -67,7 +71,4 @@ async function closePort()
     }
 }
 
-// 페이지 떠날 때 자원 정리
-window.addEventListener("beforeunload", async () => {
-    await closePort();
-});
+export { ser_send, closePort };

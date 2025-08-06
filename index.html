@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <title>TM image inference - Serial send</title>
+    <title>TM 이미지 모델 추론 - 시리얼 전송</title>
     
     <link rel="stylesheet" href="style.css"/>
 
@@ -15,14 +15,14 @@
 </head>
 
 <body>
-    <h1>TM image inference - Serial send</h1>
+    <h1>TM 이미지 모델 추론 - 시리얼 전송</h1>
     
     <div>
+        <strong id="ser_status_text" class="output">연결 해제</strong>
         <div>
             <button type="button" id="ser_on_btn" >시리얼 연결</button>
             <button type="button" id="ser_off_btn">시리얼 해제</button>
         </div>
-        <strong id="ser_status_text" class="output"></strong>
     </div>
 
     <div>
@@ -30,12 +30,17 @@
             <input type="url" id="model_url" placeholder="모델 url 입력" required>
             <button type="button" id="model_load_btn">불러오기</button>
         </div>
-        <strong id="model_status_text" class="output"></strong>
+        <strong id="model_status_text" class="output">모델 없음</strong>
+
+        <div id="label_map_cont" style="display: none;">
+            <div id="label_send_map"></div>
+            <button type="button" id="label_send_map_set_btn">전송 값 설정</button>
+        </div>
     </div>
 
     <div>
-        <div id="cam"></div>
-        <strong id="cam_status_text" class="output"></strong>
+        <div id="cam_cont"></div>
+        <strong id="cam_status_text" class="output">연결 해제</strong>
         <div>
             <button type="button" id="cam_on_btn" >웹캠 연결</button>
             <button type="button" id="cam_off_btn">웹캠 해제</button>
