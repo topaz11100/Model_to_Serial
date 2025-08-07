@@ -22,7 +22,7 @@ async function model_load_btn_click()
     try
     {
         await model_load(UI.model_url.value);
-        UI.model_status_text.textContent = "Load Success\nLabel : " + labels.join(" ");
+        UI.model_status_text.textContent = "Load Success";
         UI.label_map_cont.style.display = 'block';
         label_send_map_load();
         infer_cond.set_model(true);
