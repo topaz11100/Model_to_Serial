@@ -43,6 +43,7 @@ div {
 
 .grid_cell {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     /* 수평 가운데 */
     align-items: center;
@@ -68,6 +69,23 @@ div {
     align-items: center;
     gap: 5px;
     margin: 10px;
+}
+
+.grid_key {
+    display: grid;
+    row-gap: 5px;
+}
+
+.grid_key_cell {
+    display: flex;
+    justify-content: center;
+    /* 수평 가운데 */
+    align-items: center;
+    /* 수직 가운데 */
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 /* 컨테이너 요소 형식 끝*/
 

@@ -45,7 +45,7 @@ async function label_send_map_load()
     {
         let label_i = labels[i], base_val = labels[i].slice(0, 1);
         label_send_map.set(label_i, base_val);
-        const child = `<div class="horizontal_cont2"><strong>${label_i}</strong><input type="text" id="val_${i}" placeholder="${base_val}" maxlength="1"></input></div>`;
+        const child = `<div class="grid_key_cell"><strong>${label_i}</strong><input type="text" id="val_${i}" placeholder="${base_val}" maxlength="1"></input></div>`;
         UI.label_send_map_cont.insertAdjacentHTML("beforeend", child);
     }
 }
