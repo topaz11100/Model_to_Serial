@@ -38,18 +38,25 @@ UI.infer_btn.addEventListener('click', infer_btn_click);
 
 async function loop()
 {
-    if (infer_cond.get_cam())
-        cam.update();
-    else
-        return;
-
-    if (infer_cond.get_infer() && !infer_cond.is_stop())
+    try
     {
-        let send_txt = await predict();
-        await ser_send(send_txt);
-    }
+        if (infer_cond.get_cam())
+            cam.update();
+        else
+            return;
 
-    window.requestAnimationFrame(loop);
+        if (infer_cond.get_infer() && !infer_cond.is_stop()) {
+            let send_txt = await predict();
+            await ser_send(send_txt);
+        }
+
+        window.requestAnimationFrame(loop);
+    }
+    catch(err)
+    {
+        ser_btn_click();
+        cam_btn_click();
+    }
 }
 
 // 페이지 떠날 때 자원 정리
