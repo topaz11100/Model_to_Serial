@@ -40,11 +40,12 @@
                 <input type="url" id="model_url" placeholder="TM image model url" required>
                 <button id="model_load_btn" class="on_btn">Model Load</button>
             </div>
+
             <strong id="model_status_text" class="output">No Model</strong>
     
             <div id="label_map_cont" style="display: none;" class="flex_col">
                 <div id="label_send_map" class="grid_key">
-                    <!-- 이 안에 동적으로 요소 들어감 -->
+                    <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
                 </div>
                 <div class="flex_row">
                     <button id="label_send_map_set_btn" class="on_btn">Set Send Value</button>
@@ -57,7 +58,9 @@
         <div class="grid_cell">
             <div id="infer" style="display: none;" class="flex_col">
                 <button type="button" id="infer_btn" class="on_btn">Inference & Send</button>
-                <strong id="result" class="output"></strong>
+                <div id="result_cont">
+                    <!-- 여기에 label들이 동적으로 들어감 -->
+                </div>
             </div>
         </div>
     </div>

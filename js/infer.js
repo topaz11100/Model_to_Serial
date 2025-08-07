@@ -1,44 +1,56 @@
 import { UI } from './main.js';
 import { cam } from './cam.js';
 import { infer_cond } from './infer_cond.js';
-import { model, label_count, label_send_map } from './model_load.js';
+import { model, label_count, label_send_map, results } from './model_load.js';
 
 async function predict()
 {
     const pred = await model.predict(cam.canvas);
 
-    let result_txt = "", result_label = null, result_prob = 0;
+    let result_list = [], result_label = null, result_prob = 0;
     for (let i = 0; i < label_count; i += 1)
     {
-        let label_i = pred[i].className, prob_i = pred[i].probability.toFixed(2);
-        result_txt += `${label_i}:${prob_i} `;
-        
+        let label_i = pred[i].className, prob_i = Math.round(pred[i].probability * 100);
+        result_list.push(prob_i);
+
         if (prob_i > result_prob)
         {
             result_prob = prob_i;
             result_label = label_i;
         }
     }
-    UI.result.textContent = result_txt;
+
+    print_result(result_list);
 
     return label_send_map.get(result_label);
 }
 
+async function print_result(result_list)
+{
+    for (let i = 0; i < label_count; i += 1)
+    {
+        results.textContent = result_list;
+    }
+}
+
 function infer_btn_click()
 {
-    UI.cam_btn.disabled = true;
-    if (infer_cond.is_stop()){
+    UI.infer_btn.disabled = true;
+    if (infer_cond.is_stop())
+    {
         infer_cond.set_stop(false);
         updateshape(false);
     }
-    else {
+    else
+    {
         infer_cond.set_stop(true);
         updateshape(true);
     }
-    UI.cam_btn.disabled = false;
+    UI.infer_btn.disabled = false;
 }
 
-function updateshape(is_stop) {
+function updateshape(is_stop)
+{
     UI.infer_btn.textContent = is_stop ? "Inference & Send" : "Pause";
     UI.infer_btn.classList.toggle("off_btn", !is_stop);
     UI.infer_btn.classList.toggle("on_btn", is_stop);

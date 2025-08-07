@@ -1,8 +1,8 @@
 import { model_load_btn_click, label_send_map_set_btn_click } from './model_load.js'
 import { cam, cam_btn_click } from './cam.js';
-import { ser_send, closePort, ser_btn_click} from './serial.js'
+import { ser_send, closePort, ser_btn_click } from './serial.js'
 import { infer_cond } from './infer_cond.js';
-import { predict, infer_btn_click} from './infer.js';
+import { predict, infer_btn_click } from './infer.js';
 
 export const UI =
 {
@@ -23,10 +23,10 @@ export const UI =
     label_send_map_cont: document.getElementById("label_send_map"),
     label_send_map_set_btn: document.getElementById("label_send_map_set_btn"),
     label_send_map_status_text: document.getElementById("label_send_map_status_text"),
-    
+
     // 추론 및 결과
     infer_btn: document.getElementById("infer_btn"),
-    result: document.getElementById("result"),
+    result_cont: document.getElementById("result_cont"),
     infer: document.getElementById("infer")
 };
 
@@ -45,14 +45,15 @@ async function loop()
         else
             return;
 
-        if (infer_cond.get_infer() && !infer_cond.is_stop()) {
+        if (infer_cond.get_infer() && !infer_cond.is_stop())
+        {
             let send_txt = await predict();
             await ser_send(send_txt);
         }
 
         window.requestAnimationFrame(loop);
     }
-    catch(err)
+    catch (err)
     {
         ser_btn_click();
         cam_btn_click();
@@ -60,7 +61,8 @@ async function loop()
 }
 
 // 페이지 떠날 때 자원 정리
-window.addEventListener("beforeunload", async () => {
+window.addEventListener("beforeunload", async () =>
+{
     cam.stop();
     await closePort();
 });

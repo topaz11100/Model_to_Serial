@@ -4,6 +4,8 @@ import { infer_cond } from './infer_cond.js'
 let label_send_map = new Map();
 let model, labels, label_count;
 
+let results;
+
 async function model_load(url)
 {
     const modelURL = url + "model.json";
@@ -25,6 +27,7 @@ async function model_load_btn_click()
         UI.model_status_text.textContent = "Load Success";
         UI.label_map_cont.style.display = 'block';
         label_send_map_load();
+        result_cont_load();
         infer_cond.set_model(true);
     }
     catch (err)
@@ -37,10 +40,9 @@ async function label_send_map_load()
 {
     while (UI.label_send_map_cont.firstChild)
         UI.label_send_map_cont.removeChild(UI.label_send_map_cont.firstChild);
+    label_send_map.clear();
 
     UI.label_send_map_cont.insertAdjacentHTML("beforeend", "<strong>Serial Output Char (1 letter)</strong>");
-    
-    label_send_map.clear();
     for (let i = 0; i < label_count; i += 1)
     {
         let label_i = labels[i], base_val = labels[i].slice(0, 1);
@@ -50,11 +52,25 @@ async function label_send_map_load()
     }
 }
 
+async function result_cont_load()
+{
+    while (UI.result_cont.firstChild)
+        UI.result_cont.removeChild(UI.result_cont.firstChild);
+    results.length = 0;
+
+    for (let i = 0; i < label_count; i += 1)
+    {
+        const child = `<div class="grid_key_cell"><strong>${labels[i]}</strong><strong id="result_${i}"></strong></div>`;
+        UI.result_cont.insertAdjacentHTML("beforeend", child);
+        results.push(document.getElementById(`result_${i}`));
+    }
+}
+
 async function label_send_map_set_btn_click()
 {
     if (!infer_cond.is_stop())
         return;
-    
+
     label_send_map.clear();
     for (let i = 0; i < label_count; i += 1)
     {
@@ -66,4 +82,4 @@ async function label_send_map_set_btn_click()
     setTimeout(() => { UI.label_send_map_status_text.textContent = ""; }, 500);
 }
 
-export { model, labels, label_count, label_send_map, model_load_btn_click, label_send_map_set_btn_click };
+export { model, labels, label_count, label_send_map, model_load_btn_click, label_send_map_set_btn_click, results };

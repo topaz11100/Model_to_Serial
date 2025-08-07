@@ -6,24 +6,28 @@ let cam;
 async function cam_btn_click()
 {
     UI.cam_btn.disabled = true;
-    if (infer_cond.get_cam()) {
+    if (infer_cond.get_cam())
+    {
         off();
         updateshape(false);
     }
-    else {
+    else
+    {
         on();
         updateshape(true);
     }
     UI.cam_btn.disabled = false;
 
-    async function on() {
+    async function on()
+    {
         if (infer_cond.get_cam())
             return;
 
         infer_cond.set_cam(false);
         UI.cam_status_text.textContent = "Connecting ...";
 
-        try {
+        try
+        {
             cam = new tmImage.Webcam(200, 200, true); // width, height, flip
             await cam.setup(); // request access to the webcam
             await cam.play();
@@ -33,13 +37,15 @@ async function cam_btn_click()
             infer_cond.set_cam(true);
             window.requestAnimationFrame(loop);
         }
-        catch (err) {
+        catch (err)
+        {
             UI.cam_status_text.textContent = err.message;
             updateshape(false);
         }
     }
 
-    async function off() {
+    async function off()
+    {
         if (!infer_cond.get_cam())
             return;
 
