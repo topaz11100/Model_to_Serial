@@ -29,7 +29,7 @@ async function print_result(result_list)
 {
     for (let i = 0; i < label_count; i += 1)
     {
-        results.textContent = result_list;
+        results[i].textContent = result_list[i];
     }
 }
 

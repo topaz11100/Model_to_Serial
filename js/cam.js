@@ -31,6 +31,9 @@ async function cam_btn_click()
             cam = new tmImage.Webcam(200, 200, true); // width, height, flip
             await cam.setup(); // request access to the webcam
             await cam.play();
+
+            while (UI.cam_cont.firstChild)
+                UI.cam_cont.removeChild(UI.cam_cont.firstChild);
             UI.cam_cont.appendChild(cam.canvas);
 
             UI.cam_status_text.textContent = "WebCam Connected";
@@ -39,6 +42,7 @@ async function cam_btn_click()
         }
         catch (err)
         {
+            console.log(err.message);
             UI.cam_status_text.textContent = err.message;
             updateshape(false);
         }
@@ -49,6 +53,7 @@ async function cam_btn_click()
         if (!infer_cond.get_cam())
             return;
 
+        
         infer_cond.set_cam(false);
         UI.cam_status_text.textContent = "Disconnected";
 

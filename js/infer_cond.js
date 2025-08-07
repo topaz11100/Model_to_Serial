@@ -16,7 +16,6 @@ class infer_condition
         if (this._model && this._ser && this._cam)
         {
             UI.infer.style.display = 'block';
-            UI.result.textContent = "";
             updateshape(true);
         }
         else

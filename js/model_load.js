@@ -4,7 +4,7 @@ import { infer_cond } from './infer_cond.js'
 let label_send_map = new Map();
 let model, labels, label_count;
 
-let results;
+let results = [];
 
 async function model_load(url)
 {
