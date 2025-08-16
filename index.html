@@ -45,14 +45,14 @@
 
             <strong id="model_txt" class="output">Model Disconnected</strong>
     
-            <div id="output_cont" style="display: none;">
-                <strong id="label_notice" class="output">Serial Output Char (1 letter)</strong>
-                <div id="map_cont" class="grid_key">
+            <div id="map_cont" style="display: none;">
+                <strong class="output">Serial Output Char (1 letter)</strong>
+                <table><tbody id="map">
                     <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
-                </div>
+                </tbody></table>
                 <div class="flex_row">
-                    <strong id="map_txt" class="output"></strong>
                     <button id="map_btn" class="dis_btn">Set</button>
+                    <strong id="map_txt" class="output">Output Not Set</strong>
                 </div>
             </div>
         </div>
@@ -61,9 +61,21 @@
         <div class="grid_cell">
             <div id="infer_cont" style="display: none;">
                 <button id="infer_btn" class="dis_btn">Inference & Send</button>
-                <div id="result_cont">
-                    <!-- 여기에 label들이 동적으로 들어감 -->
-                </div>
+                <table>
+                    <thead><tr><th>Labels</th><th>Probability (%)</th></tr></thead>
+                    <tbody id="infer_result">
+                        <!-- 모델 추론 결과 -->
+                    </tbody>
+                </table>
+                <table>
+                    <thead><tr><th>Max Label</th><th>Sent Value</th></tr></thead>
+                    <tbody id="final_result">
+                        <!-- 전송된 값 표시 -->
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -1,34 +1,44 @@
-import { dev_transition } from './device.js';
-import { ui_transition } from './ui.js';
+import { dev_tran } from './device.js';
+import { ui_tran, infer_ready_ui_tran, infer_stop_ui_tran } from './ui.js';
 
 // dev_state_set = "DIS", "REQUEST", "CON"
 const dev_state = 
 {
-    ser: "DIS",
-    cam: "DIS",
-    model: "DIS",
-    output: "DIS"
+    Serial: "DIS",
+    WebCam: "DIS",
+    Model: "DIS",
+    Output: "DIS"
 }
 
 async function dev_state_transition(dev)
 {
-    ui_transition(dev, "REQUEST");
-    await dev_transition(dev);
-    ui_transition(dev, dev_state[dev]);
+    ui_tran(dev, "REQUEST");
+    await dev_tran(dev);
+    ui_tran(dev, dev_state[dev]);
+    set_ready(dev_state.ser === "CON" && dev_state.cam === "CON" &&
+              dev_state.model === "CON" && dev_state.output === "CON"); 
 }
 
 // infer_state_set = boolean
-const infer_state_target = 
+const infer_state =
 {
     ready: false,
     stop: true,
-    error: false,
 }
 
-async function infer_state_transition(dev)
+function set_ready(boolean)
 {
-    await infer_transition(dev);
-    ui_transition(dev);
+    if (!boolean)
+        infer_state.stop = true;
+
+    infer_state.ready = boolean;
+    infer_ready_ui_tran(boolean);
 }
 
-export { dev_state, dev_state_transition, infer_state_target, infer_state_transition };
+function infer_stop_transition()
+{
+    infer_state.stop = !infer_state.stop;
+    infer_stop_ui_tran(infer_state.stop);
+}
+
+export { dev_state, dev_state_transition, infer_state, infer_stop_transition };

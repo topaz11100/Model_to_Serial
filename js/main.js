@@ -1,4 +1,6 @@
-import { dev_state, dev_state_transition, infer_state_target, infer_state_transition } from './state.js';
+import { dev_state_transition, infer_state, infer_stop_transition } from './state.js';
+import { dis_ser, dis_cam } from './device.js';
+import { error_alert } from './ui.js';
 
 const Ser_UI =
 {
@@ -20,12 +22,12 @@ const Model_UI =
     btn: document.getElementById("model_btn"),
     txt: document.getElementById("model_txt"),
     //라벨-전송키 설정 부분
-    output_cont: document.getElementById("output_cont"),
+    map_cont: document.getElementById("map_cont"),
 }
 
 const Output_UI =
 {
-    cont: document.getElementById("map_cont"),
+    map: document.getElementById("map"),
     btn: document.getElementById("map_btn"),
     txt: document.getElementById("map_txt"),
 }
@@ -34,34 +36,59 @@ const Infer_UI =
 {
     cont: document.getElementById("infer_cont"),
     btn: document.getElementById("infer_btn"),
-    result_cont: document.getElementById("result_cont")
+    infer_result: document.getElementById("infer_result"),
+    final_result: document.getElementById("final_result")
 }
 
 Ser_UI.btn.addEventListener('click', async() => {
     Ser_UI.btn.disabled = true;
-    await dev_state_transition('ser');
+    await dev_state_transition('Serial');
     Ser_UI.btn.disabled = false;
 });
 
 Cam_UI.btn.addEventListener('click', async () =>
 {
     Cam_UI.btn.disabled = true;
-    await dev_state_transition('cam');
+    await dev_state_transition('WebCam');
     Cam_UI.btn.disabled = false;
 });
 
 Model_UI.btn.addEventListener('click', async () =>
 {
     Model_UI.btn.disabled = true;
-    await dev_state_transition('model');
+    await dev_state_transition('Model');
     Model_UI.btn.disabled = false;
 });
 
 Output_UI.btn.addEventListener('click', async () =>
 {
     Output_UI.btn.disabled = true;
-    await dev_state_transition('output');
+    await dev_state_transition('Output');
     Output_UI.btn.disabled = false;
+});
+
+Infer_UI.btn.addEventListener('click', () =>
+{
+    Infer_UI.btn.disabled = true;
+    infer_stop_transition();
+    Infer_UI.btn.disabled = false;
+});
+
+//추론 전 갑자기 시리얼 끊겼을 때
+navigator.serial.addEventListener("disconnect", async () =>
+{
+    if (infer_state.stop)
+    {
+        await dev_state_transition("Serial");
+        error_alert("Serial", "Serial connection lost");
+    }
+});
+
+// 페이지 떠날 때 자원 정리
+window.addEventListener("beforeunload", () =>
+{
+    dis_ser();
+    dis_cam();
 });
 
 export { Ser_UI, Cam_UI, Model_UI, Output_UI, Infer_UI };
