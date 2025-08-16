@@ -193,13 +193,16 @@ function infer_stop_ui_tran(state)
 
 function result_load()
 {
-    del_child(Infer_UI.cont);
+    del_child(Infer_UI.infer_result);
     for (let i = 0; i < Model.labels_count; i += 1)
     {
         let label_i = Model.labels[i];
         const child = `<tr><td>${label_i}</td><td>0</td></tr>`;
-        Infer_UI.cont.insertAdjacentHTML("beforeend", child);
+        Infer_UI.infer_result.insertAdjacentHTML("beforeend", child);
     }
+
+    Infer_UI.final_result.rows[0].cells[0].textContent = "";
+    Infer_UI.final_result.rows[0].cells[1].textContent = "";
 }
 
 function print_result()

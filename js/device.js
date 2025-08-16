@@ -148,9 +148,9 @@ async function ser_cam_tran(dev, con, dis)
             catch (E)
             {
                 console.log(E.message);
-                error_alert(dev, E.message);
-                dict_clear(dev == 'ser' ? Ser : Cam);
+                dict_clear(dev == 'Serial' ? Ser : Cam);
                 dev_state[dev] = "DIS";
+                error_alert(dev, E.message);
             }
             break;
         case "CON":
@@ -161,8 +161,8 @@ async function ser_cam_tran(dev, con, dis)
             catch (E)
             {
                 console.log(E.message);
+                dict_clear(dev == 'Serial' ? Ser : Cam);
                 error_alert(dev, E.message);
-                dict_clear(dev == 'ser' ? Ser : Cam);
             }
             dev_state[dev] = "DIS";
             break;
@@ -183,9 +183,9 @@ async function model_output_tran(dev, con)
             catch (E)
             {
                 console.log(E.message);
-                error_alert(dev, E.message);
-                dict_clear(dev == 'model' ? Model : Output);
+                dict_clear(dev == 'Model' ? Model : Output);
                 dev_state[dev] = "DIS";
+                error_alert(dev, E.message);
             }
             break;
     }

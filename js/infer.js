@@ -1,6 +1,6 @@
 import { dev_state, infer_state, dev_state_transition } from './state.js';
 import { send_ser, Cam, Model, Output } from './device.js';
-import { print_result, error_alert } from './ui.js';
+import { print_result, error_alert, infer_stop_ui_tran } from './ui.js';
 
 const Infer =
 {
@@ -35,7 +35,7 @@ async function loop()
 {
     try
     {
-        if (dev_state.cam === 'CON')
+        if (dev_state.WebCam === 'CON')
             await Cam.cam.update();
         else
             return;
@@ -45,8 +45,8 @@ async function loop()
     catch (E)
     {
         console.log(E.message);
-        error_alert("cam", E.message);
-        await dev_state_transition("cam");
+        await dev_state_transition("WebCam");
+        error_alert("WebCam", E.message);
     }
 
     if (infer_state.ready && !infer_state.stop)
@@ -60,9 +60,10 @@ async function loop()
         catch (E)
         {
             console.log(E.message);
+            await dev_state_transition("Serial");
+            await dev_state_transition("WebCam");
+            infer_stop_ui_tran(true);
             error_alert("infer", E.message);
-            await dev_state_transition("ser");
-            await dev_state_transition("cam");
         }
     }
 }

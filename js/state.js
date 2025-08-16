@@ -15,8 +15,8 @@ async function dev_state_transition(dev)
     ui_tran(dev, "REQUEST");
     await dev_tran(dev);
     ui_tran(dev, dev_state[dev]);
-    set_ready(dev_state.ser === "CON" && dev_state.cam === "CON" &&
-              dev_state.model === "CON" && dev_state.output === "CON"); 
+    set_ready(dev_state.Serial === "CON" && dev_state.WebCam === "CON" &&
+              dev_state.Model === "CON" && dev_state.Output === "CON"); 
 }
 
 // infer_state_set = boolean

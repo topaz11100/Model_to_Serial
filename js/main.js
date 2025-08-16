@@ -1,6 +1,6 @@
 import { dev_state_transition, infer_state, infer_stop_transition } from './state.js';
 import { dis_ser, dis_cam } from './device.js';
-import { error_alert } from './ui.js';
+import { error_alert, infer_stop_ui_tran } from './ui.js';
 
 const Ser_UI =
 {
@@ -74,13 +74,21 @@ Infer_UI.btn.addEventListener('click', () =>
     Infer_UI.btn.disabled = false;
 });
 
-//추론 전 갑자기 시리얼 끊겼을 때
+//갑자기 시리얼 끊겼을 때
 navigator.serial.addEventListener("disconnect", async () =>
 {
+    //추론 전
     if (infer_state.stop)
     {
         await dev_state_transition("Serial");
         error_alert("Serial", "Serial connection lost");
+    }
+    //추론 중
+    else
+    {
+        await dev_state_transition("Serial");
+        infer_stop_ui_tran(true);
+        error_alert("infer", "Serial connection lost");
     }
 });
 
