@@ -55,7 +55,7 @@ function ser_tran(state)
     switch (state)
     {
         case "REQUEST":
-            btn_txt_change(Ser_UI, `${Ser_UI.btn.textContent}ing...`, "request_txt", `${Ser_UI.txt.textContent}`, "request_btn");
+            btn_txt_change(Ser_UI, `${Ser_UI.btn.textContent}ing...`, "request_txt", `${Ser_UI.btn.textContent}ing...`, "request_btn");
             break;
         case "DIS":
             btn_txt_change(Ser_UI, "Serial Not Connected", "dis_txt", "Connect", "dis_btn");
@@ -71,7 +71,7 @@ function cam_tran(state)
     switch (state)
     {
         case "REQUEST":
-            btn_txt_change(Cam_UI, `${Cam_UI.btn.textContent}ing...`, "request_txt", `${Cam_UI.txt.textContent}`, "request_btn");
+            btn_txt_change(Cam_UI, `${Cam_UI.btn.textContent}ing...`, "request_txt", `${Cam_UI.btn.textContent}ing...`, "request_btn");
             break;
 
         case "DIS":
@@ -96,7 +96,7 @@ function model_tran(state)
         case "REQUEST":
             Model_UI.map_cont.style.display = "none";
 
-            btn_txt_change(Model_UI, `${Model_UI.btn.textContent}ing...`, "request_txt", `${Model_UI.txt.textContent}`, "request_btn");
+            btn_txt_change(Model_UI, "Loading ...", "request_txt", "Loading", "request_btn");
             break;
 
         case "DIS":
@@ -132,11 +132,11 @@ function output_tran(state)
     switch (state)
     {
         case "REQUEST":
-            btn_txt_change(Output_UI, `${Output_UI.btn.textContent}ing...`, "request_txt", `${Output_UI.txt.textContent}`, "request_btn");
+            btn_txt_change(Output_UI, "Setting ...", "request_txt", "Setting", "request_btn");
             break;
 
         case "DIS":
-            btn_txt_change(Output_UI, "Output Not Loaded", "dis_txt", "Set", "dis_btn");
+            btn_txt_change(Output_UI, "Output Not Set", "dis_txt", "Set", "dis_btn");
             break;
 
         case "CON":
@@ -163,17 +163,15 @@ function infer_stop_ui_tran(state)
 {
     switch (state)
     {
-        //추론 진행(시작 명령만 내림)
+        //추론 진행
         case false:
             Ser_UI.btn.disabled = true;
             Cam_UI.btn.disabled = true;
             Model_UI.btn.disabled = true;
             Output_UI.btn.disabled = true;
             
-            //추론 완료때 까지 좀 걸림 -> 준비로 처리
-            Infer_UI.btn.disabled = true;
-            Infer_UI.btn.textContent = "Prepairing...";
-            Infer_UI.btn.className = "request_btn";
+            Infer_UI.btn.textContent = "Pause";
+            Infer_UI.btn.className = "con_btn";
             break;
         //추론 중지
         case true:
@@ -184,12 +182,7 @@ function infer_stop_ui_tran(state)
 
             Infer_UI.btn.textContent = "Inference & Send";
             Infer_UI.btn.className = "dis_btn";
-            break;
-        //매 추론 완료시점
-        case "Complete Inference":
-            Infer_UI.btn.disabled = false;
-            Infer_UI.btn.textContent = "Pause";
-            Infer_UI.btn.className = "con_btn";
+            break;       
     }
 }
 

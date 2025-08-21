@@ -1,4 +1,4 @@
-import { dev_tran } from './device.js';
+import { dict_clear, dev_tran } from './device.js';
 import { ui_tran, infer_ready_ui_tran, infer_stop_ui_tran } from './ui.js';
 
 // dev_state_set = "DIS", "REQUEST", "CON"

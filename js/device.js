@@ -197,4 +197,4 @@ async function model_output_tran(dev, con)
     }
 }
 
-export { send_ser, Cam, Model, Output, dev_tran, ser_cam_tran, dis_ser, dis_cam };
+export { dict_clear, send_ser, Cam, Model, Output, dev_tran, ser_cam_tran, dis_ser, dis_cam };
