@@ -1,3 +1,9 @@
+:root
+{
+  --main_font_size: 20px;
+  --btn_input_font_size: 16px;
+}
+
 *
 {
   margin: 0;
@@ -10,6 +16,7 @@ body
 {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .grid
@@ -17,4 +24,36 @@ body
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(2, auto);
+
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+
+  gap: 10px;
+}
+
+.grid_cell
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex_row
+{
+  display: flex;
+}
+
+
+
+table
+{
+  table-layout: fixed;
+}
+
+#map_table td:nth-of-type(2) input
+{
+  width: 16px;
+  min-width: 0;
 }

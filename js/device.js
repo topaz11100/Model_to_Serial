@@ -171,23 +171,19 @@ async function ser_cam_tran(dev, con, dis)
 
 async function model_output_tran(dev, con)
 {
-    switch (dev_state[dev])
+    dev_state[dev] = "DIS";
+    
+    try
     {
-        case "DIS":
-        case "CON":
-            try
-            {
-                await con();
-                dev_state[dev] = "CON";
-            }
-            catch (E)
-            {
-                console.log(E.message);
-                dict_clear(dev == 'Model' ? Model : Output);
-                dev_state[dev] = "DIS";
-                error_alert(dev, E.message);
-            }
-            break;
+        await con();
+        dev_state[dev] = "CON";
+    }
+    catch (E)
+    {
+        console.log(E.message);
+        dict_clear(dev == 'Model' ? Model : Output);
+        dev_state[dev] = "DIS";
+        error_alert(dev, E.message);
     }
 }
 

@@ -1,4 +1,4 @@
-import { dev_state_transition, infer_state, infer_stop_transition } from './state.js';
+import { dev_state, dev_state_transition, infer_state, infer_stop_transition, set_ready } from './state.js';
 import { dis_ser, dis_cam } from './device.js';
 import { error_alert, infer_stop_ui_tran } from './ui.js';
 
@@ -95,8 +95,12 @@ navigator.serial.addEventListener("disconnect", async () =>
 // 페이지 떠날 때 자원 정리
 window.addEventListener("beforeunload", () =>
 {
-    dis_ser();
+    for (const key in dev_state)
+        dev_state[key] = "DIS";
+    set_ready(false);
+
     dis_cam();
+    dis_ser();
 });
 
 export { Ser_UI, Cam_UI, Model_UI, Output_UI, Infer_UI };

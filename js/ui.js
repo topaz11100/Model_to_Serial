@@ -107,7 +107,7 @@ function model_tran(state)
             break;
 
         case "CON":
-            Model_UI.map_cont.style.display = "block";
+            Model_UI.map_cont.style.display = "";
             output_load();
             result_load();
             Model_UI.txt.textContent = "Model Loaded";
@@ -158,7 +158,7 @@ function infer_ready_ui_tran(state)
     switch (state)
     {
         case true:
-            Infer_UI.cont.style.display = "block";
+            Infer_UI.cont.style.display = "";
             break;
         case false:
             Infer_UI.cont.style.display = "none";
