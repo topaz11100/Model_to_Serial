@@ -74,6 +74,11 @@ Infer_UI.btn.addEventListener('click', () =>
     Infer_UI.btn.disabled = false;
 });
 
+Model_UI.url.addEventListener("focus",    () => { Model_UI.url.scrollLeft = Model_UI.url.scrollWidth; });
+Model_UI.url.addEventListener("focusout", () => { Model_UI.url.scrollLeft = Model_UI.url.scrollWidth; });
+Model_UI.url.addEventListener("blur",     () => { Model_UI.url.scrollLeft = Model_UI.url.scrollWidth; });
+Model_UI.url.addEventListener("input",    () => { Model_UI.url.scrollLeft = Model_UI.url.scrollWidth; });
+
 //갑자기 시리얼 끊겼을 때
 navigator.serial.addEventListener("disconnect", async () =>
 {

@@ -14,8 +14,11 @@ async function dev_state_transition(dev)
 {
     ui_tran(dev, "REQUEST");
     set_ready(false);
+    
     await dev_tran(dev);
+
     ui_tran(dev, dev_state[dev]);
+    if (dev === "Model") ui_tran("Output", dev_state["Output"]);
     set_ready(dev_state.Serial === "CON" && dev_state.WebCam === "CON" && dev_state.Model === "CON" && dev_state.Output === "CON"); 
 }
 

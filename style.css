@@ -1,10 +1,10 @@
 /*구글 폰트 - 나눔 고딕 코딩*/
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root
 {
-  --main_font_size: 20px;
-  --btn_input_font_size: 16px;
+  --main_font_size: 24px;
+  --btn_input_font_size: 20px;
 }
 
 *
@@ -12,7 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Nanum Gothic Coding", sans-serif;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 body
@@ -20,8 +20,11 @@ body
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: rgb(235, 235, 235);
 }
 
+/* 컨테이너 ================================================== */
 .grid
 {
   display: grid;
@@ -43,23 +46,123 @@ body
   align-items: center;
 }
 
+.ser_model_cell
+{
+  /*캠 셀과 거리 맞춤*/
+  align-self: stretch;
+  /*자식 요소 균등 배치*/
+  justify-content: space-evenly;
+}
+
 .flex_row
 {
   display: flex;
 }
+/* 컨테이너 ================================================== */
 
 
-
+/* 테이블   ================================================== */
 table
 {
   table-layout: fixed;
+  font-size: var(--main_font_size);
+}
+
+#map_table
+{
+  border-collapse: separate;
+  border-spacing: 10px 2px;
 }
 
 #map_table td:nth-of-type(2) input
 {
-  width: 16px;
+  width: var(--btn_input_font_size);
   min-width: 0;
 }
+/* 테이블   ================================================== */
+
+
+/* 텍스트   ================================================== */
+strong
+{
+  font-size: var(--main_font_size);
+}
+
+.dis_txt
+{
+  color: rgb(255, 58, 58);
+}
+
+.con_txt
+{
+  color: rgb(45, 142, 253);
+}
+
+.request_txt
+{
+  color: rgb(0, 48, 8);
+}
+
+.guide_txt
+{
+  color: rgb(0, 0, 0);
+}
+/* 텍스트   ================================================== */
+
+
+/* 입력창   ================================================== */
+input
+{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  text-indent: 0;
+  text-align: center;
+
+  font-size: var(--btn_input_font_size);
+  color: rgb(0, 0, 0);
+}
+
+input::placeholder
+{
+  color: rgb(0, 0, 0);
+  opacity: 1;
+  font-style: italic;
+}
+/* 입력창   ================================================== */
+
+
+/* 버튼     ================================================== */
+button
+{
+  padding: 2px 5px;
+  font-size: var(--btn_input_font_size);
+  
+  cursor: pointer;
+
+  border: none;
+  border-radius: 4px;
+}
+
+.dis_btn
+{
+  background-color: rgb(58, 199, 255);
+  color: rgb(0, 44, 61);
+}
+
+.con_btn
+{
+  background-color: rgb(255, 58, 196);
+  color: rgb(71, 0, 50);
+}
+
+.request_btn
+{
+  background-color: rgb(81, 255, 58);
+  color: rgb(5, 46, 0);
+}
+/* 버튼     ================================================== */
 
 #cam_cont
 {

@@ -114,6 +114,11 @@ async function con_output()
     }
 }
 
+function dis_output()
+{
+    dict_clear(Output);
+}
+
 async function dev_tran(dev)
 {
     switch (dev)
@@ -172,7 +177,12 @@ async function ser_cam_tran(dev, con, dis)
 async function model_output_tran(dev, con)
 {
     dev_state[dev] = "DIS";
-    
+    if (dev === "Model")
+    {
+        dis_output();
+        dev_state["Output"] = "DIS";
+    }
+
     try
     {
         await con();

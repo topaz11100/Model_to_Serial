@@ -54,6 +54,7 @@ async function loop()
         try
         {
             await predict();
+            infer_stop_ui_tran("Complete Inference");
             print_result();
             await send_ser(Infer.output_char);
         }
