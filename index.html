@@ -52,45 +52,41 @@
                         <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
                     </tbody>
                 </table>
-                <div class="flex_row">
-                    <button id="map_btn" class="dis_btn">Set</button>
-                    <strong id="map_txt" class="output">Output Not Set</strong>
-                </div>
+                <button id="map_btn" class="dis_btn">Set</button>
+                <strong id="map_txt" class="output">Output Not Set</strong>
             </div>
         </div>
 
         <!-- 우 하단 추론 및 전송 -->
-        <!--div class="grid_cell"-->
-            <div id="infer_cont" style="display: none;" class="grid_cell">
-                <button id="infer_btn" class="dis_btn">Inference & Send</button>
-                <table id="infer_result_table">
-                    <thead>
-                        <tr>
-                            <th>Labels</th>
-                            <th>Probability (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="infer_result">
-                        <!-- 모델 추론 결과 -->
-                    </tbody>
-                </table>
-                <table id="final_result_table">
-                    <thead>
-                        <tr>
-                            <th>Max Label</th>
-                            <th>Sent Value</th>
-                        </tr>
-                    </thead>
-                    <tbody id="final_result">
-                        <!-- 전송된 값 표시 -->
-                        <tr>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        <!--/div-->
+        <div id="infer_cont" style="display: none;" class="grid_cell">
+            <button id="infer_btn" class="dis_btn">Inference & Send</button>
+            <table id="infer_result_table">
+                <thead>
+                    <tr>
+                        <th>Labels</th>
+                        <th>Probability (%)</th>
+                    </tr>
+                </thead>
+                <tbody id="infer_result">
+                    <!-- 모델 추론 결과 -->
+                </tbody>
+            </table>
+            <table id="final_result_table">
+                <thead>
+                    <tr>
+                        <th>Max Label</th>
+                        <th>Sent Value</th>
+                    </tr>
+                </thead>
+                <tbody id="final_result">
+                    <!-- 전송된 값 표시 -->
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </body>

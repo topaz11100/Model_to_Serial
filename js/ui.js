@@ -146,7 +146,7 @@ function output_tran(state)
 
         case "CON":
             Output_UI.txt.textContent = "";
-            setTimeout(() => { Output_UI.txt.textContent = "Output Set"; }, 500);
+            setTimeout(() => { Output_UI.txt.textContent = "Output Set"; }, 100);
             Output_UI.btn.textContent = "Set";
             Output_UI.btn.className = "dis_btn";
             break;

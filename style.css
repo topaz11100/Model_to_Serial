@@ -60,3 +60,9 @@ table
   width: 16px;
   min-width: 0;
 }
+
+#cam_cont
+{
+  width: 200px;
+  height: 200px;
+}
