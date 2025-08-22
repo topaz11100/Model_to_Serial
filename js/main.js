@@ -82,18 +82,11 @@ Model_UI.url.addEventListener("input",    () => { Model_UI.url.scrollLeft = Mode
 //갑자기 시리얼 끊겼을 때
 navigator.serial.addEventListener("disconnect", async () =>
 {
-    //추론 전
+    //추론 중에는 loop에서 예외 처리하므로 추론 전에만 검사
     if (infer_state.stop)
     {
         await dev_state_transition("Serial");
         error_alert("Serial", "Serial connection lost");
-    }
-    //추론 중
-    else
-    {
-        await dev_state_transition("Serial");
-        infer_stop_ui_tran(true);
-        error_alert("infer", "Serial connection lost");
     }
 });
 

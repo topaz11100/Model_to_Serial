@@ -89,12 +89,19 @@ const Model =
 
 async function con_model()
 {
+    //url 설정
     let url = Model_UI.url.value;
     const modelURL = url + "model.json";
     const metadataURL = url + "metadata.json";
+    //모델, 라벨, 개수 웹에서 로드
     Model.model = await tmImage.load(modelURL, metadataURL);
     Model.labels = Model.model.getClassLabels();
     Model.labels_count = Model.model.getTotalClasses();
+    //추론 캐시 로드 위해 무의미 값으로 1회 추론
+    const dummy = document.createElement('canvas');
+    dummy.width = 200;
+    dummy.height = 200;
+    await Model.model.predict(dummy);
 }
 
 const Output =
