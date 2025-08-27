@@ -38,22 +38,24 @@
 
         <!-- 우 상단 웹캠 -->
         <div class="grid_cell">
+            <strong id="cam_txt" class="dis_txt">WebCam Not Connected</strong>
+            <button id="cam_btn" class="dis_btn">Connect</button>
             <div id="cam_cont">
                 <!-- 웹캠 -->
             </div>
-            <strong id="cam_txt" class="dis_txt">WebCam Not Connected</strong>
-            <button id="cam_btn" class="dis_btn">Connect</button>
         </div>
 
         <!-- 좌 하단 키 설정 -->
         <div id="map_cont" style="display: none;" class="grid_cell">
-            <strong class="guide_txt">Serial Output Char (1 letter)</strong>
-            <table id="map_table">
-                <tbody id="map">
-                    <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
-                </tbody>
-            </table>
-            <button id="map_btn" class="dis_btn">Set</button>
+            <strong class="guide_txt">Output Set (1 letter)</strong>
+            <div class="flex_row">
+                <table id="map_table">
+                    <tbody id="map">
+                        <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
+                    </tbody>
+                </table>
+                <button id="map_btn" class="dis_btn">Set</button>
+            </div>
             <strong id="map_txt" class="dis_txt">Output Not Set</strong>
         </div>
 
