@@ -58,10 +58,10 @@ function ser_tran(state)
             btn_txt_change(Ser_UI, `${Ser_UI.btn.textContent}ing...`, "request_txt", `${Ser_UI.btn.textContent}ing...`, "request_btn");
             break;
         case "DIS":
-            btn_txt_change(Ser_UI, "Serial Not Connected", "dis_txt", "Connect", "dis_btn");
+            btn_txt_change(Ser_UI, "Serial Not Connected", "dis_txt", "Serial Connect", "dis_btn");
             break;
         case "CON":
-            btn_txt_change(Ser_UI, "Serial Connected", "con_txt", "Disconnect", "con_btn");
+            btn_txt_change(Ser_UI, "Serial Connected", "con_txt", "Serial Disconnect", "con_btn");
             break;
     }
 }
@@ -77,14 +77,14 @@ function cam_tran(state)
         case "DIS":
             del_child(Cam_UI.cont);
 
-            btn_txt_change(Cam_UI, "WebCam Not Connected", "dis_txt", "Connect", "dis_btn");
+            btn_txt_change(Cam_UI, "WebCam Not Connected", "dis_txt", "WebCam Connect", "dis_btn");
             break;
 
         case "CON":
             del_child(Cam_UI.cont);
             Cam_UI.cont.appendChild(Cam.cam.canvas);
 
-            btn_txt_change(Cam_UI, "WebCam Connected", "con_txt", "Disconnect", "con_btn");
+            btn_txt_change(Cam_UI, "WebCam Connected", "con_txt", "WebCam Disconnect", "con_btn");
             break;
     }
 }
@@ -96,13 +96,13 @@ function model_tran(state)
         case "REQUEST":
             Model_UI.map_cont.style.display = "none";
 
-            btn_txt_change(Model_UI, "Loading ...", "request_txt", "Loading", "request_btn");
+            btn_txt_change(Model_UI, "Model Loading ...", "request_txt", "Model Loading", "request_btn");
             break;
 
         case "DIS":
             Model_UI.map_cont.style.display = "none";
 
-            btn_txt_change(Model_UI, "Model Not Loaded", "dis_txt", "Load", "dis_btn");
+            btn_txt_change(Model_UI, "Model Not Loaded", "dis_txt", "Model Load", "dis_btn");
             break;
 
         case "CON":
@@ -111,7 +111,7 @@ function model_tran(state)
             output_load();
             result_load();
 
-            btn_txt_change(Model_UI, "Model Loaded", "con_txt", "Load", "dis_btn");
+            btn_txt_change(Model_UI, "Model Loaded", "con_txt", "Model Load", "dis_btn");
             break;
     }
 }
@@ -132,16 +132,16 @@ function output_tran(state)
     switch (state)
     {
         case "REQUEST":
-            btn_txt_change(Output_UI, "Setting ...", "request_txt", "Setting", "request_btn");
+            btn_txt_change(Output_UI, "Output Setting ...", "request_txt", "Output Setting", "request_btn");
             break;
 
         case "DIS":
-            btn_txt_change(Output_UI, "Output Not Set", "dis_txt", "Set", "dis_btn");
+            btn_txt_change(Output_UI, "Output Not Set", "dis_txt", "Output Set", "dis_btn");
             break;
 
         case "CON":
-            btn_txt_change(Output_UI, "", "con_txt", "Set", "dis_btn");
-            setTimeout(() => { Output_UI.txt.textContent = "Output Set"; }, 100);
+            btn_txt_change(Output_UI, "Output Set Complete", "con_txt", "Output Set", "dis_btn");
+            setTimeout(() => { Output_UI.txt.textContent = "Output Set"; }, 300);
             break;
     }
 }
@@ -151,10 +151,10 @@ function infer_ready_ui_tran(state)
     switch (state)
     {
         case true:
-            Infer_UI.cont.style.display = "";
+            Infer_UI.btn.disabled = false;
             break;
         case false:
-            Infer_UI.cont.style.display = "none";
+            Infer_UI.btn.disabled = true;
             break;
     }
 }
@@ -196,8 +196,8 @@ function result_load()
         Infer_UI.infer_result.insertAdjacentHTML("beforeend", child);
     }
 
-    Infer_UI.final_result.rows[0].cells[0].textContent = "";
     Infer_UI.final_result.rows[0].cells[1].textContent = "";
+    Infer_UI.final_result.rows[1].cells[1].textContent = "";
 }
 
 function print_result()
@@ -205,8 +205,8 @@ function print_result()
     for (let i = 0; i < Model.labels_count; i += 1)
         Infer_UI.infer_result.rows[i].cells[1].textContent = Infer.result[i];
 
-    Infer_UI.final_result.rows[0].cells[0].textContent = Infer.output_label;
-    Infer_UI.final_result.rows[0].cells[1].textContent = Infer.output_char;
+    Infer_UI.final_result.rows[0].cells[1].textContent = Infer.output_label;
+    Infer_UI.final_result.rows[1].cells[1].textContent = Infer.output_char;
 }
 
 export { ui_tran, infer_ready_ui_tran, infer_stop_ui_tran, print_result, error_alert };

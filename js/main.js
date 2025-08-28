@@ -34,10 +34,9 @@ const Output_UI =
 
 const Infer_UI =
 {
-    cont: document.getElementById("infer_cont"),
     btn: document.getElementById("infer_btn"),
-    infer_result: document.getElementById("infer_result"),
-    final_result: document.getElementById("final_result")
+    final_result: document.getElementById("final_result"),
+    infer_result: document.getElementById("infer_result")
 }
 
 Ser_UI.btn.addEventListener('click', async() => {
