@@ -1,0 +1,88 @@
+
+:root
+{
+  --main_font_size: 30px;
+  --btn_input_font_size: 20px;
+}
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Consolas", sans-serif;
+}
+
+body
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgb(163, 163, 163);
+}
+
+.graph_cont
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.bar_cont
+{
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  height: calc(var(--main_font_size) + 3px);
+
+  border-radius: 10px;
+
+  position: relative;
+}
+
+.bar
+{
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+
+  border-radius: 10px;
+}
+
+#a
+{
+  width: 0%;
+}
+
+#b
+{
+  width: 20%;
+}
+
+#c
+{
+  width: 50%;
+}
+
+#d
+{
+  width: 95%;
+}
+
+#e
+{
+  width: 100%;
+}
+
+.bar_cont strong
+{
+  position: absolute;
+  right: 8px;
+  /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: var(--main_font_size);
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+
+
