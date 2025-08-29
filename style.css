@@ -24,7 +24,7 @@ body
   gap: 20px;
   padding-top: 20px;
 
-  background-color: rgb(210, 210, 210);
+  background-color: rgb(159, 159, 159);
 }
 
 /* 컨테이너 ================================================== */
@@ -110,6 +110,20 @@ table
   font-size: var(--main_font_size);
 }
 
+#final_result
+{
+  border-collapse: separate;
+  /* or collapse 둘 다 가능 */
+  border-spacing: 0;
+  /* 바깥 여백 제거 */
+}
+
+#final_result th+th
+{
+  border-left: 40px solid transparent;
+  /* 내부 열 사이만 35px 간격처럼 보이게 */
+}
+
 #final_result th:nth-of-type(1)
 {
   text-align: left;
@@ -175,14 +189,14 @@ strong
 {
   color: rgb(255, 255, 255);
   text-shadow:
-      -2px -2px 0 #000,
-      0px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 0px 0 #000,
-      2px 0px 0 #000,
-      -2px 2px 0 #000,
-      0px 2px 0 #000,
-      2px 2px 0 #000;
+      -1px -1px 0 #000,
+      0px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 0px 0 #000,
+      1px 0px 0 #000,
+      -1px 1px 0 #000,
+      0px 1px 0 #000,
+      1px 1px 0 #000;
 }
 
 .request_txt
@@ -210,7 +224,7 @@ button
 
 button:disabled
 {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
@@ -249,7 +263,7 @@ button:disabled
 .bar_cont
 {
   background-color: rgb(255, 255, 255);
-  width: 270px;
+  width: 250px;
   height: calc(var(--main_font_size) + 3px);
 
   border-radius: 10px;
@@ -265,7 +279,7 @@ button:disabled
   top: 50%;
   transform: translateY(-50%);
 
-  width: 160px;
+  width: 150px;
 
   overflow: hidden;
   white-space: nowrap;
