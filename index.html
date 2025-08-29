@@ -19,23 +19,21 @@
 
 <body>
     <!-- 웹캠 / 결과 출력부 -->
-    <div id="cam_result_cont" class="flex_row">
+    <div id="cam_result_cont">
         <!-- 웹캠 컨테이너 -->
         <div id="cam_cont">
             <!-- 웹캠 공간 -->
         </div>
 
         <!-- 결과 컨테이너 -->
-        <div class="flex_col">
+        <div id="result_cont">
             <!-- 결과 라벨 / 전송값 -->
             <table id="final_result">
                 <tr>
-                    <th>Max Label</th>
-                    <th></th>
+                    <th>Max Label</th> <th></th>
                 </tr>
                 <tr>
-                    <th>Output</th>
-                    <th></th>
+                    <th>Output</th> <th></th>
                 </tr>
             </table>
             <!-- 출력층 확률 -->
@@ -49,19 +47,20 @@
     <button id="infer_btn" class="dis_btn" disabled>Inference & Send</button>
 
     <!-- 상태 / 기능 연결부 -->
-    <div class="flex_row">
+    <div id="stat_connector_cont">
         <!-- 상태문구 -->
-        <div class="flex_col">
+        <div id="stat_txt_cont">
             <strong id="map_txt" class="dis_txt">Output Not Set</strong>
             <strong id="model_txt" class="dis_txt">Model Not Loaded</strong>
             <strong id="cam_txt" class="dis_txt">WebCam Not Connected</strong>
             <strong id="ser_txt" class="dis_txt">Serial Not Connected</strong>
         </div>
         <!-- 기능 연결 버튼 -->
-        <div class="flex_col">
-            <div id="map_cont" style="display: none;" class="grid_cell">
+        <div id="connector_cont">
+            <!-- 시리얼 전송 키 설정부 -->
+            <div id="map_cont" style="display: none;">
                 <strong class="guide_txt">Output Set (1 letter)</strong>
-                <div class="flex_row">
+                <div id="map_set_btn_cont">
                     <table id="map_table">
                         <tbody id="map">
                             <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
@@ -70,11 +69,13 @@
                     <button id="map_btn" class="dis_btn">Set</button>
                 </div>
             </div>
-            <div class="flex_row">
+            <!-- 모델 연결부 -->
+            <div id="url_btn">
                 <input type="url" id="model_url" placeholder="TM image model url" required>
                 <button id="model_btn" class="dis_btn">Model Load</button>
             </div>
-            <div class="flex_row">
+            <!-- 시리얼/웹캠 -->
+            <div id="btn_btn">
                 <button id="ser_btn" class="dis_btn">Serial Connect</button>
                 <button id="cam_btn" class="dis_btn">WebCam Connect</button>
             </div>

@@ -3,7 +3,7 @@
 
 :root
 {
-  --main_font_size: 24px;
+  --main_font_size: 25px;
   --btn_input_font_size: 20px;
 }
 
@@ -21,19 +21,22 @@ body
   flex-direction: column;
   align-items: center;
 
-  background-color: rgb(221, 221, 221);
+  gap: 20px;
+  padding-top: 20px;
+
+  background-color: rgb(210, 210, 210);
 }
 
 /* 컨테이너 ================================================== */
-.flex_row
-{
-  display: flex;
-}
-
 #cam_result_cont
 {
+  display: flex;
+  align-items: center;
+  /* 웹캠 고정위치로 만듬 */
   width: 100%;
-  padding-left: calc(50% - 206px);
+  padding-left: calc(50% - 206px - 20px);
+
+  gap: 20px;
 }
 
 #cam_cont
@@ -44,10 +47,58 @@ body
   border: 3px solid rgb(0, 0, 0);
 }
 
-.flex_col
+#result_cont
 {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+#stat_connector_cont
+{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#stat_txt_cont
+{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#connector_cont
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+#map_cont
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#map_set_btn_cont
+{
+  display: flex;
+  align-items: center;
+}
+
+#url_btn
+{
+  display: flex;
+}
+
+#btn_btn
+{
+  display: flex;
+  gap: 5px;
 }
 /* 컨테이너 ================================================== */
 
@@ -57,6 +108,16 @@ table
 {
   table-layout: fixed;
   font-size: var(--main_font_size);
+}
+
+#final_result th:nth-of-type(1)
+{
+  text-align: left;
+}
+
+#final_result th:nth-of-type(2)
+{
+  text-align: center;
 }
 
 #map_table
@@ -71,35 +132,6 @@ table
   min-width: 0;
 }
 /* 테이블   ================================================== */
-
-
-/* 텍스트   ================================================== */
-strong
-{
-  font-size: var(--main_font_size);
-}
-
-.dis_txt
-{
-  color: rgb(255, 58, 58);
-}
-
-.con_txt
-{
-  color: rgb(45, 142, 253);
-}
-
-.request_txt
-{
-  color: rgb(0, 48, 8);
-}
-
-.guide_txt
-{
-  color: rgb(0, 0, 0);
-}
-/* 텍스트   ================================================== */
-
 
 /* 입력창   ================================================== */
 input
@@ -121,8 +153,48 @@ input::placeholder
   opacity: 1;
   font-style: italic;
 }
+
+#model_url
+{
+  width: 200px;
+}
 /* 입력창   ================================================== */
 
+/* 텍스트   ================================================== */
+strong
+{
+  font-size: var(--main_font_size);
+}
+
+.dis_txt
+{
+  color: rgb(0, 0, 0);
+}
+
+.con_txt
+{
+  color: rgb(255, 255, 255);
+  text-shadow:
+      -2px -2px 0 #000,
+      0px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 0px 0 #000,
+      2px 0px 0 #000,
+      -2px 2px 0 #000,
+      0px 2px 0 #000,
+      2px 2px 0 #000;
+}
+
+.request_txt
+{
+  color: rgb(160, 160, 160);
+}
+
+.guide_txt
+{
+  color: rgb(0, 0, 0);
+}
+/* 텍스트   ================================================== */
 
 /* 버튼     ================================================== */
 button
@@ -138,32 +210,37 @@ button
 
 button:disabled
 {
-  opacity: 0.4;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
 .dis_btn
 {
-  background-color: rgb(58, 199, 255);
-  color: rgb(0, 44, 61);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .con_btn
 {
-  background-color: rgb(255, 58, 196);
-  color: rgb(71, 0, 50);
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .request_btn
 {
-  background-color: rgb(81, 255, 58);
-  color: rgb(5, 46, 0);
+  background-color: rgb(128, 128, 128);
+  color: rgb(0, 0, 0);
+}
+
+#infer_btn
+{
+  font-size: calc(var(--btn_input_font_size) + 10px);
 }
 /* 버튼     ================================================== */
 
 
-
-.graph_cont
+/* 그래프     ================================================== */
+#infer_result
 {
   display: flex;
   flex-direction: column;
@@ -172,12 +249,39 @@ button:disabled
 .bar_cont
 {
   background-color: rgb(255, 255, 255);
-  width: 300px;
+  width: 270px;
   height: calc(var(--main_font_size) + 3px);
 
   border-radius: 10px;
 
   position: relative;
+}
+
+.bar_label
+{
+  position: absolute;
+  left: 8px;
+  /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 160px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: var(--main_font_size);
+  color: rgb(255, 255, 255);
+  text-shadow:
+      -1px -1px 0 #000,
+      0px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 0px 0 #000,
+      1px 0px 0 #000,
+      -1px 1px 0 #000,
+      0px 1px 0 #000,
+      1px 1px 0 #000;
 }
 
 .bar
@@ -199,24 +303,14 @@ button:disabled
 
   font-size: var(--main_font_size);
   color: rgb(255, 255, 255);
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  text-shadow:
+      -1px -1px 0 #000,
+      0px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 0px 0 #000,
+      1px 0px 0 #000,
+      -1px 1px 0 #000,
+      0px 1px 0 #000,
+      1px 1px 0 #000;
 }
-
-.bar_label
-{
-  position: absolute;
-  left: 8px;
-  /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 175px;
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
-  font-size: var(--main_font_size);
-  color: rgb(255, 255, 255);
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
-}
+/* 그래프     ================================================== */
