@@ -17,7 +17,7 @@ async function predict()
     let max_label = null, max_prob = 0;
     for (let i = 0; i < Model.labels_count; i += 1)
     {
-        let label_i = pred[i].className, prob_i = (pred[i].probability * 100).toFixed(1);
+        let label_i = pred[i].className, prob_i = Math.round(pred[i].probability * 100);
         Infer.result.push(prob_i);
 
         if (prob_i > max_prob)

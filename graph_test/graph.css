@@ -1,4 +1,5 @@
-
+/*구글 폰트*/
+@import url('https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap');
 :root
 {
   --main_font_size: 30px;
@@ -10,7 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Consolas", sans-serif;
+  font-family: "Asta Sans", sans-serif;
 }
 
 body
@@ -43,6 +44,7 @@ body
 {
   background-color: rgb(0, 0, 0);
   height: 100%;
+  width: 0%;
 
   border-radius: 10px;
 }
@@ -72,7 +74,7 @@ body
   width: 100%;
 }
 
-.bar_cont strong
+.bar_value
 {
   position: absolute;
   right: 8px;
@@ -85,4 +87,22 @@ body
   -webkit-text-stroke: 1px rgb(0, 0, 0);
 }
 
+.bar_label
+{
+  position: absolute;
+  left: 8px;
+  /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 175px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: var(--main_font_size);
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
 

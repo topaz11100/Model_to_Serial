@@ -1,5 +1,5 @@
-/*구글 폰트 - Chakra Petch*/
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+/*구글 폰트*/
+@import url('https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap');
 
 :root
 {
@@ -12,7 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Chakra Petch", sans-serif;
+  font-family: "Asta Sans", sans-serif;
 }
 
 body
@@ -21,42 +21,27 @@ body
   flex-direction: column;
   align-items: center;
 
-  background-color: rgb(163, 163, 163);
+  background-color: rgb(221, 221, 221);
 }
 
 /* 컨테이너 ================================================== */
-.grid
-{
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(2, auto);
-
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-
-  gap: 20px;
-}
-
-.grid_cell
-{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.ser_model_cell
-{
-  /*캠 셀과 거리 맞춤*/
-  align-self: stretch;
-  /*자식 요소 균등 배치*/
-  justify-content: space-evenly;
-}
-
 .flex_row
 {
   display: flex;
+}
+
+#cam_result_cont
+{
+  width: 100%;
+  padding-left: calc(50% - 206px);
+}
+
+#cam_cont
+{
+  display: flex;
+  width: 206px;
+  height: 206px;
+  border: 3px solid rgb(0, 0, 0);
 }
 
 .flex_col
@@ -176,10 +161,62 @@ button:disabled
 }
 /* 버튼     ================================================== */
 
-#cam_cont
+
+
+.graph_cont
 {
   display: flex;
-  width: 206px;
-  height: 206px;
-  border: 3px solid rgb(0, 0, 0);
+  flex-direction: column;
+}
+
+.bar_cont
+{
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  height: calc(var(--main_font_size) + 3px);
+
+  border-radius: 10px;
+
+  position: relative;
+}
+
+.bar
+{
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+  width: 0%;
+
+  border-radius: 10px;
+}
+
+.bar_value
+{
+  position: absolute;
+  right: 8px;
+  /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: var(--main_font_size);
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+
+.bar_label
+{
+  position: absolute;
+  left: 8px;
+  /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 175px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: var(--main_font_size);
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
 }

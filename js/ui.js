@@ -122,7 +122,9 @@ function output_load()
     for (let i = 0; i < Model.labels_count; i += 1)
     {
         let label_i = Model.labels[i], base_val = Model.labels[i].slice(0, 1);
-        const child = `<tr><td>${label_i}</td><td><input id="val_${i}" value="${base_val}" maxlength="1"></td></tr>`;
+        const child = `<tr>
+                           <td>${label_i}</td><td><input id="val_${i}" value="${base_val}" maxlength="1"></td>
+                       </tr>`;
         Output_UI.map.insertAdjacentHTML("beforeend", child);
     }
 }
@@ -189,12 +191,17 @@ function infer_stop_ui_tran(state)
 function result_load()
 {
     del_child(Infer_UI.infer_result);
+    
+    let child = "";
     for (let i = 0; i < Model.labels_count; i += 1)
     {
-        let label_i = Model.labels[i];
-        const child = `<tr><td>${label_i}</td><td>0</td></tr>`;
-        Infer_UI.infer_result.insertAdjacentHTML("beforeend", child);
+        child += `<div class="bar_cont">
+                    <strong class="bar_label">${Model.labels[i]}</strong>
+                    <div id="bar_${i}" class="bar"></div>
+                    <strong id="bar_value_${i}" class="bar_value">0%</strong>
+                  </div>`;
     }
+    Infer_UI.infer_result.insertAdjacentHTML("beforeend", child);
 
     Infer_UI.final_result.rows[0].cells[1].textContent = "";
     Infer_UI.final_result.rows[1].cells[1].textContent = "";
@@ -203,7 +210,13 @@ function result_load()
 function print_result()
 {
     for (let i = 0; i < Model.labels_count; i += 1)
-        Infer_UI.infer_result.rows[i].cells[1].textContent = Infer.result[i];
+    {
+        const bar = document.getElementById(`bar_${1}`);
+        bar.style.width = `${Infer.result[i]}%`
+
+        const bar_value = document.getElementById(`bar_value_${1}`);
+        bar_value.textContent = `${Infer.result[i]}%`;
+    }
 
     Infer_UI.final_result.rows[0].cells[1].textContent = Infer.output_label;
     Infer_UI.final_result.rows[1].cells[1].textContent = Infer.output_char;
