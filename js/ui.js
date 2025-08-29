@@ -211,10 +211,10 @@ function print_result()
 {
     for (let i = 0; i < Model.labels_count; i += 1)
     {
-        const bar = document.getElementById(`bar_${1}`);
+        const bar = document.getElementById(`bar_${i}`);
         bar.style.width = `${Infer.result[i]}%`
 
-        const bar_value = document.getElementById(`bar_value_${1}`);
+        const bar_value = document.getElementById(`bar_value_${i}`);
         bar_value.textContent = `${Infer.result[i]}%`;
     }
 
