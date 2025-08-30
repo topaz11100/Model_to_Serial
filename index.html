@@ -25,16 +25,16 @@ Copyright 2025 topaz11100
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3478994052127729" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="flex_col">
     <!-- 웹캠 / 결과 출력부 -->
-    <div id="cam_result_cont">
+    <div id="cam_result_cont" class="flex_row">
         <!-- 웹캠 컨테이너 -->
         <div id="cam_cont">
             <!-- 웹캠 공간 -->
         </div>
 
         <!-- 결과 컨테이너 -->
-        <div id="result_cont">
+        <div id="result_cont" class="flex_col">
             <!-- 결과 라벨 / 전송값 -->
             <table id="final_result">
                 <tr>
@@ -45,7 +45,7 @@ Copyright 2025 topaz11100
                 </tr>
             </table>
             <!-- 출력층 확률 -->
-            <div id="infer_result">
+            <div id="infer_result" class="flex_col">
                 <!-- 모델 추론 결과 -->
             </div>
         </div>
@@ -55,35 +55,35 @@ Copyright 2025 topaz11100
     <button id="infer_btn" class="dis_btn" disabled>Inference & Send</button>
 
     <!-- 상태 / 기능 연결부 -->
-    <div id="stat_connector_cont">
+    <div id="stat_connector_cont" class="flex_row">
         <!-- 상태문구 -->
-        <div id="stat_txt_cont">
+        <div id="stat_txt_cont" class="flex_col">
             <strong id="map_txt" class="dis_txt">Output Not Set</strong>
             <strong id="model_txt" class="dis_txt">Model Not Loaded</strong>
             <strong id="cam_txt" class="dis_txt">WebCam Not Connected</strong>
             <strong id="ser_txt" class="dis_txt">Serial Not Connected</strong>
         </div>
-        <!-- 기능 연결 버튼 -->
-        <div id="connector_cont">
+        <!-- 기능 연결 버튼 묶음 -->
+        <div id="connector_cont" class="flex_col">
             <!-- 시리얼 전송 키 설정부 -->
-            <div id="map_cont" style="display: none;">
-                <strong class="guide_txt">Output Set (1 letter)</strong>
-                <div id="map_set_btn_cont">
+            <div id="map_cont" style="display: none;" class="flex_col">
+                <strong>Output Set (1 letter)</strong>
+                <div id="map_set_btn_cont" class="flex_row">
                     <table id="map_table">
                         <tbody id="map">
                             <!-- 여기에 라벨에 대한 키가 동적으로 들어감 -->
                         </tbody>
                     </table>
-                    <button id="map_btn" class="dis_btn">Set</button>
+                    <button id="map_btn" class="dis_btn">Output Set</button>
                 </div>
             </div>
             <!-- 모델 연결부 -->
-            <div id="url_btn">
+            <div id="url_btn" class="flex_row">
                 <input type="url" id="model_url" placeholder="TM image model url" required>
                 <button id="model_btn" class="dis_btn">Model Load</button>
             </div>
             <!-- 시리얼/웹캠 -->
-            <div id="btn_btn">
+            <div id="btn_btn" class="flex_row">
                 <button id="ser_btn" class="dis_btn">Serial Connect</button>
                 <button id="cam_btn" class="dis_btn">WebCam Connect</button>
             </div>
@@ -100,7 +100,7 @@ Copyright 2025 topaz11100
         to the serial device as an Output Set.
     </strong>
 
-    <div id="maker">
+    <div id="maker" class="flex_row">
         <strong>Made By topaz11100</strong>
         <a href="https://github.com/topaz11100" target="_blank">
             <img id="github_logo" src="./image/github_logo.svg" alt="GitHub Logo">

@@ -10,6 +10,31 @@ Copyright 2025 topaz11100
 {
   --main_font_size: 25px;
   --btn_input_font_size: 22px;
+
+  --web_background_color: rgb(180, 180, 180);
+
+  --cam_size: 200px;
+  --cam_cont_border_size: 3px;
+
+  --text_shadow_size: 1px;
+  --black_text_shadow:
+    calc(-1 * var(--text_shadow_size)) calc(-1 * var(--text_shadow_size)) 0 black,
+    0 calc(-1 * var(--text_shadow_size)) 0 black,
+    var(--text_shadow_size) calc(-1 * var(--text_shadow_size)) 0 black,
+    calc(-1 * var(--text_shadow_size)) 0 0 black,
+    var(--text_shadow_size) 0 0 black,
+    calc(-1 * var(--text_shadow_size)) var(--text_shadow_size) 0 black,
+    0 var(--text_shadow_size) 0 black,
+    var(--text_shadow_size) var(--text_shadow_size) 0 black;
+  --white_text_shadow:
+    calc(-1 * var(--text_shadow_size)) calc(-1 * var(--text_shadow_size)) 0 white,
+    0 calc(-1 * var(--text_shadow_size)) 0 white,
+    var(--text_shadow_size) calc(-1 * var(--text_shadow_size)) 0 white,
+    calc(-1 * var(--text_shadow_size)) 0 0 white,
+    var(--text_shadow_size) 0 0 white,
+    calc(-1 * var(--text_shadow_size)) var(--text_shadow_size) 0 white,
+    0 var(--text_shadow_size) 0 white,
+    var(--text_shadow_size) var(--text_shadow_size) 0 white;
 }
 
 *
@@ -22,24 +47,32 @@ Copyright 2025 topaz11100
 
 body
 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   gap: 20px;
   padding-top: 20px;
 
-  background-color: rgb(180, 180, 180);
+  background-color: var(--web_background_color);
 }
 
 /* 컨테이너 ================================================== */
-#cam_result_cont
+
+.flex_row
 {
   display: flex;
   align-items: center;
+}
+
+.flex_col
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cam_result_cont
+{
   /* 웹캠 고정위치로 만듬 */
   width: 100%;
-  padding-left: calc(50% - 206px - 20px);
+  padding-left: calc(50% - calc(var(--cam_size) + 2 * var(--cam_cont_border_size)) - 20px);
 
   gap: 20px;
 }
@@ -47,70 +80,49 @@ body
 #cam_cont
 {
   display: flex;
-  width: 206px;
-  height: 206px;
-  border: 3px solid rgb(0, 0, 0);
+  width: calc(var(--cam_size) + 2 * var(--cam_cont_border_size));
+  height: calc(var(--cam_size) + 2 * var(--cam_cont_border_size));
+  border: var(--cam_cont_border_size) solid rgb(0, 0, 0);
 }
 
 #result_cont
 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
 }
 
 #stat_connector_cont
 {
-  display: flex;
-  align-items: center;
   gap: 30px;
 }
 
 #stat_txt_cont
 {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
 }
 
 #connector_cont
 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 7px;
-}
-
-#map_cont
-{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 #map_set_btn_cont
 {
-  display: flex;
-  align-items: center;
   gap: 7px;
 }
 
 #url_btn
 {
-  display: flex;
+  align-items: stretch;
 }
 
 #btn_btn
 {
-  display: flex;
+  align-items: stretch;
   gap: 7px;
 }
 
 #maker
 {
-  display: flex;
-  align-items: center;
   gap: 7px;
 }
 /* 컨테이너 ================================================== */
@@ -164,6 +176,7 @@ table
   width: calc(var(--btn_input_font_size) + 5px);
   min-width: 0;
 }
+
 /* 테이블   ================================================== */
 
 /* 입력창   ================================================== */
@@ -207,34 +220,13 @@ strong
 .con_txt
 {
   color: rgb(255, 255, 255);
-  text-shadow:
-      -1px -1px 0 rgb(0, 0, 0),
-      0px -1px 0 rgb(0, 0, 0),
-      1px -1px 0 rgb(0, 0, 0),
-      -1px 0px 0 rgb(0, 0, 0),
-      1px 0px 0 rgb(0, 0, 0),
-      -1px 1px 0 rgb(0, 0, 0),
-      0px 1px 0 rgb(0, 0, 0),
-      1px 1px 0 rgb(0, 0, 0);
+  text-shadow: var(--black_text_shadow);
 }
 
 .request_txt
 {
   color: rgb(150, 150, 150);
-  text-shadow:
-      -1px -1px 0 rgb(0, 0, 0),
-      0px -1px 0 rgb(0, 0, 0),
-      1px -1px 0 rgb(0, 0, 0),
-      -1px 0px 0 rgb(0, 0, 0),
-      1px 0px 0 rgb(0, 0, 0),
-      -1px 1px 0 rgb(0, 0, 0),
-      0px 1px 0 rgb(0, 0, 0),
-      1px 1px 0 rgb(0, 0, 0);
-}
-
-.guide_txt
-{
-  color: rgb(0, 0, 0);
+  text-shadow: var(--black_text_shadow);
 }
 /* 텍스트   ================================================== */
 
@@ -243,11 +235,16 @@ button
 {
   padding: 2px 5px;
   font-size: var(--btn_input_font_size);
-  
+
   cursor: pointer;
 
   border: none;
   border-radius: 4px;
+}
+
+button:hover
+{
+  opacity: 0.8;
 }
 
 button:disabled
@@ -278,16 +275,11 @@ button:disabled
 {
   font-size: calc(var(--btn_input_font_size) + 10px);
 }
+
 /* 버튼     ================================================== */
 
 
 /* 그래프     ================================================== */
-#infer_result
-{
-  display: flex;
-  flex-direction: column;
-}
-
 .bar_cont
 {
   background-color: rgb(225, 225, 225);
@@ -315,15 +307,7 @@ button:disabled
 
   font-size: var(--main_font_size);
   color: rgb(255, 255, 255);
-  text-shadow:
-      -1px -1px 0 rgb(0, 0, 0),
-      0px -1px 0 rgb(0, 0, 0),
-      1px -1px 0 rgb(0, 0, 0),
-      -1px 0px 0 rgb(0, 0, 0),
-      1px 0px 0 rgb(0, 0, 0),
-      -1px 1px 0 rgb(0, 0, 0),
-      0px 1px 0 rgb(0, 0, 0),
-      1px 1px 0 rgb(0, 0, 0);
+  text-shadow: var(--black_text_shadow);
 }
 
 .bar
@@ -345,22 +329,20 @@ button:disabled
 
   font-size: var(--main_font_size);
   color: rgb(255, 255, 255);
-  text-shadow:
-      -1px -1px 0 rgb(0, 0, 0),
-      0px -1px 0 rgb(0, 0, 0),
-      1px -1px 0 rgb(0, 0, 0),
-      -1px 0px 0 rgb(0, 0, 0),
-      1px 0px 0 rgb(0, 0, 0),
-      -1px 1px 0 rgb(0, 0, 0),
-      0px 1px 0 rgb(0, 0, 0),
-      1px 1px 0 rgb(0, 0, 0);
+  text-shadow: var(--black_text_shadow);
 }
+
 /* 그래프     ================================================== */
 
 #github_logo
 {
   width: 40px;
   height: auto;
+}
+
+#github_logo:hover
+{
+  opacity: 0.8;
 }
 
 a
@@ -371,15 +353,7 @@ a
   font-weight: bold;
   color: rgb(255, 255, 255);
 
-  text-shadow:
-      -1px -1px 0 rgb(0, 0, 0),
-      0px -1px 0 rgb(0, 0, 0),
-      1px -1px 0 rgb(0, 0, 0),
-      -1px 0px 0 rgb(0, 0, 0),
-      1px 0px 0 rgb(0, 0, 0),
-      -1px 1px 0 rgb(0, 0, 0),
-      0px 1px 0 rgb(0, 0, 0),
-      1px 1px 0 rgb(0, 0, 0);
+  text-shadow: var(--black_text_shadow);
 }
 
 a:hover
@@ -395,10 +369,6 @@ a:hover
 
   padding: 20px;
   border-radius: 20px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 #license_table th
@@ -414,14 +384,10 @@ a:hover
 
 #my_license_btn_cont
 {
-  display: flex;
-  align-items: center;
   gap: 20px;
 }
 
 #logo_credit
 {
-  display: flex;
-  align-items: center;
   gap: 10px;
 }
