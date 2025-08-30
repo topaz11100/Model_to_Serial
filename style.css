@@ -157,7 +157,7 @@ table
 
 #final_result th:nth-of-type(2)
 {
-  text-align: right;
+  text-align: center;
 }
 
 #map_table
