@@ -1,5 +1,4 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 홈 -->
   <url>
     <loc>https://model2serial.netlify.app/</loc>
     <lastmod>2025-08-31</lastmod>
@@ -7,7 +6,6 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- 라이선스 페이지 -->
   <url>
     <loc>https://model2serial.netlify.app/licenses</loc>
     <lastmod>2025-08-31</lastmod>
