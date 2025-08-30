@@ -1,3 +1,8 @@
+/*!
+SPDX-License-Identifier: Apache-2.0
+Copyright 2025 topaz11100
+*/
+
 import { Model_UI } from './main.js';
 import { dev_state } from './state.js';
 import { loop } from './infer.js';

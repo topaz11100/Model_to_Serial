@@ -1,12 +1,8 @@
-## TM_Web_Serial
+## License Notice
 
-목표 : url로 내보낸 티처블머신 모델을 받아 웹페이지에서 추론
-결과를 바로 외부 시리얼 장치에 전송
+This project uses the following third-party libraries:
+- TensorFlow.js (Apache License 2.0)
+- Teachable Machine Image (Apache License 2.0)
 
-진행상황
-목표 성공
-
-더 해야할것
-연결해제 기능 만들기
-모델 라벨에 따라 전송할 값 편집 하는 기능 만들기
-(-> 현재는 라벨의 첫 글자만 전송)
+The original libraries are used as-is without modification.  
+For full license details, see [licenses.html](./licenses.html).

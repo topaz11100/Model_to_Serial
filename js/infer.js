@@ -1,3 +1,8 @@
+/*!
+SPDX-License-Identifier: Apache-2.0
+Copyright 2025 topaz11100
+*/
+
 import { dev_state, infer_state, dev_state_transition } from './state.js';
 import { send_ser, Cam, Model, Output } from './device.js';
 import { print_result, error_alert, infer_stop_ui_tran } from './ui.js';

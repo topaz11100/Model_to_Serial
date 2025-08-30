@@ -1,3 +1,8 @@
+/*!
+SPDX-License-Identifier: Apache-2.0
+Copyright 2025 topaz11100
+*/
+
 import { dev_state, dev_state_transition, infer_state, infer_stop_transition, set_ready } from './state.js';
 import { dis_ser, dis_cam } from './device.js';
 import { error_alert, infer_stop_ui_tran } from './ui.js';

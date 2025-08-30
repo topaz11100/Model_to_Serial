@@ -1,3 +1,8 @@
+/*!
+SPDX-License-Identifier: Apache-2.0
+Copyright 2025 topaz11100
+*/
+
 import { dict_clear, dev_tran } from './device.js';
 import { ui_tran, infer_ready_ui_tran, infer_stop_ui_tran } from './ui.js';
 

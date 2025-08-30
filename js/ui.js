@@ -1,3 +1,8 @@
+/*!
+SPDX-License-Identifier: Apache-2.0
+Copyright 2025 topaz11100
+*/
+
 import { Ser_UI, Cam_UI, Model_UI, Output_UI, Infer_UI } from './main.js';
 import { Cam, Model } from './device.js';
 import { Infer } from './infer.js';
@@ -143,7 +148,7 @@ function output_tran(state)
 
         case "CON":
             btn_txt_change(Output_UI, "Output Set Complete", "con_txt", "Output Set", "dis_btn");
-            setTimeout(() => { Output_UI.txt.textContent = "Output Set"; }, 300);
+            setTimeout(() => { Output_UI.txt.textContent = "Output Set"; }, 500);
             break;
     }
 }

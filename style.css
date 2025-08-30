@@ -1,10 +1,15 @@
+/*!
+SPDX-License-Identifier: Apache-2.0
+Copyright 2025 topaz11100
+*/
+
 /*구글 폰트*/
 @import url('https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap');
 
 :root
 {
   --main_font_size: 25px;
-  --btn_input_font_size: 20px;
+  --btn_input_font_size: 22px;
 }
 
 *
@@ -24,7 +29,7 @@ body
   gap: 20px;
   padding-top: 20px;
 
-  background-color: rgb(159, 159, 159);
+  background-color: rgb(180, 180, 180);
 }
 
 /* 컨테이너 ================================================== */
@@ -88,6 +93,7 @@ body
 {
   display: flex;
   align-items: center;
+  gap: 7px;
 }
 
 #url_btn
@@ -98,7 +104,14 @@ body
 #btn_btn
 {
   display: flex;
-  gap: 5px;
+  gap: 7px;
+}
+
+#maker
+{
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 /* 컨테이너 ================================================== */
 
@@ -137,12 +150,18 @@ table
 #map_table
 {
   border-collapse: separate;
-  border-spacing: 10px 2px;
+  border-spacing: 0;
+}
+
+#map_table td+td
+{
+  border-left: 10px solid transparent;
+  /* 내부 열 사이만 35px 간격처럼 보이게 */
 }
 
 #map_table td:nth-of-type(2) input
 {
-  width: var(--btn_input_font_size);
+  width: calc(var(--btn_input_font_size) + 5px);
   min-width: 0;
 }
 /* 테이블   ================================================== */
@@ -170,7 +189,7 @@ input::placeholder
 
 #model_url
 {
-  width: 200px;
+  width: 220px;
 }
 /* 입력창   ================================================== */
 
@@ -189,19 +208,28 @@ strong
 {
   color: rgb(255, 255, 255);
   text-shadow:
-      -1px -1px 0 #000,
-      0px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 0px 0 #000,
-      1px 0px 0 #000,
-      -1px 1px 0 #000,
-      0px 1px 0 #000,
-      1px 1px 0 #000;
+      -1px -1px 0 rgb(0, 0, 0),
+      0px -1px 0 rgb(0, 0, 0),
+      1px -1px 0 rgb(0, 0, 0),
+      -1px 0px 0 rgb(0, 0, 0),
+      1px 0px 0 rgb(0, 0, 0),
+      -1px 1px 0 rgb(0, 0, 0),
+      0px 1px 0 rgb(0, 0, 0),
+      1px 1px 0 rgb(0, 0, 0);
 }
 
 .request_txt
 {
-  color: rgb(160, 160, 160);
+  color: rgb(150, 150, 150);
+  text-shadow:
+      -1px -1px 0 rgb(0, 0, 0),
+      0px -1px 0 rgb(0, 0, 0),
+      1px -1px 0 rgb(0, 0, 0),
+      -1px 0px 0 rgb(0, 0, 0),
+      1px 0px 0 rgb(0, 0, 0),
+      -1px 1px 0 rgb(0, 0, 0),
+      0px 1px 0 rgb(0, 0, 0),
+      1px 1px 0 rgb(0, 0, 0);
 }
 
 .guide_txt
@@ -262,7 +290,7 @@ button:disabled
 
 .bar_cont
 {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(225, 225, 225);
   width: 250px;
   height: calc(var(--main_font_size) + 3px);
 
@@ -288,14 +316,14 @@ button:disabled
   font-size: var(--main_font_size);
   color: rgb(255, 255, 255);
   text-shadow:
-      -1px -1px 0 #000,
-      0px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 0px 0 #000,
-      1px 0px 0 #000,
-      -1px 1px 0 #000,
-      0px 1px 0 #000,
-      1px 1px 0 #000;
+      -1px -1px 0 rgb(0, 0, 0),
+      0px -1px 0 rgb(0, 0, 0),
+      1px -1px 0 rgb(0, 0, 0),
+      -1px 0px 0 rgb(0, 0, 0),
+      1px 0px 0 rgb(0, 0, 0),
+      -1px 1px 0 rgb(0, 0, 0),
+      0px 1px 0 rgb(0, 0, 0),
+      1px 1px 0 rgb(0, 0, 0);
 }
 
 .bar
@@ -318,13 +346,82 @@ button:disabled
   font-size: var(--main_font_size);
   color: rgb(255, 255, 255);
   text-shadow:
-      -1px -1px 0 #000,
-      0px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 0px 0 #000,
-      1px 0px 0 #000,
-      -1px 1px 0 #000,
-      0px 1px 0 #000,
-      1px 1px 0 #000;
+      -1px -1px 0 rgb(0, 0, 0),
+      0px -1px 0 rgb(0, 0, 0),
+      1px -1px 0 rgb(0, 0, 0),
+      -1px 0px 0 rgb(0, 0, 0),
+      1px 0px 0 rgb(0, 0, 0),
+      -1px 1px 0 rgb(0, 0, 0),
+      0px 1px 0 rgb(0, 0, 0),
+      1px 1px 0 rgb(0, 0, 0);
 }
 /* 그래프     ================================================== */
+
+#github_logo
+{
+  width: 40px;
+  height: auto;
+}
+
+a
+{
+  /* 밑줄 없애기 */
+  text-decoration: none;
+
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+
+  text-shadow:
+      -1px -1px 0 rgb(0, 0, 0),
+      0px -1px 0 rgb(0, 0, 0),
+      1px -1px 0 rgb(0, 0, 0),
+      -1px 0px 0 rgb(0, 0, 0),
+      1px 0px 0 rgb(0, 0, 0),
+      -1px 1px 0 rgb(0, 0, 0),
+      0px 1px 0 rgb(0, 0, 0),
+      1px 1px 0 rgb(0, 0, 0);
+}
+
+a:hover
+{
+  text-decoration: underline;
+  /* hover 시 밑줄 */
+}
+
+.license_txt
+{
+  white-space: pre-wrap;
+  background-color: rgb(225, 225, 225);
+
+  padding: 20px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#license_table th
+{
+  text-align: center;
+}
+
+#license_table th+th
+{
+  border-left: 20px solid transparent;
+  /* 내부 열 사이만 20px 간격처럼 보이게 */
+}
+
+#my_license_btn_cont
+{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#logo_credit
+{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
