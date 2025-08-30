@@ -87,6 +87,7 @@ body
 
 #result_cont
 {
+  align-items: flex-start;
   gap: 10px;
 }
 
