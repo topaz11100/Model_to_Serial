@@ -22,6 +22,10 @@ See the [Licenses & Notices](./licenses.html) page for full license texts.
 
 ---
 
+## Deployed at [https://model2serial.netlify.app/](https://model2serial.netlify.app/)
+
+---
+
 ## 소개
 
 웹 브라우저에서 Teachable Machine Image 모델을 로드하여 실시간 추론,
