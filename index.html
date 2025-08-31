@@ -36,14 +36,12 @@ Copyright 2025 topaz11100
         <!-- 결과 컨테이너 -->
         <div id="result_cont" class="flex_col">
             <!-- 결과 라벨 / 전송값 -->
-            <table id="final_result">
-                <tr>
-                    <th>Max Label</th> <th></th>
-                </tr>
-                <tr>
-                    <th>Output</th> <th></th>
-                </tr>
-            </table>
+            <div id="max_label_cont" class="flex_row">
+                <strong>Max Label</strong><strong id="max_label"></strong>
+            </div>
+            <div id="output_cont" class="flex_row">
+                <strong>Output</strong><strong id="output"></strong>
+            </div>
             <!-- 출력층 확률 -->
             <div id="infer_result" class="flex_col">
                 <!-- 모델 추론 결과 -->

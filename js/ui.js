@@ -208,8 +208,8 @@ function result_load()
     }
     Infer_UI.infer_result.insertAdjacentHTML("beforeend", child);
 
-    Infer_UI.final_result.rows[0].cells[1].textContent = "";
-    Infer_UI.final_result.rows[1].cells[1].textContent = "";
+    Infer_UI.max_label.textContent = "";
+    Infer_UI.output.textContent = "";
 }
 
 function print_result()
@@ -223,8 +223,8 @@ function print_result()
         bar_value.textContent = `${Infer.result[i]}%`;
     }
 
-    Infer_UI.final_result.rows[0].cells[1].textContent = Infer.output_label;
-    Infer_UI.final_result.rows[1].cells[1].textContent = Infer.output_char;
+    Infer_UI.max_label.textContent = Infer.output_label;
+    Infer_UI.output.textContent = Infer.output_char;
 }
 
 export { ui_tran, infer_ready_ui_tran, infer_stop_ui_tran, print_result, error_alert };

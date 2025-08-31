@@ -91,6 +91,16 @@ body
   gap: 10px;
 }
 
+#max_label_cont
+{
+  gap: 30px;
+}
+
+#output_cont
+{
+  gap: 50px;
+}
+
 #stat_connector_cont
 {
   gap: 30px;
@@ -134,30 +144,6 @@ table
 {
   table-layout: fixed;
   font-size: var(--main_font_size);
-}
-
-#final_result
-{
-  border-collapse: separate;
-  /* or collapse 둘 다 가능 */
-  border-spacing: 0;
-  /* 바깥 여백 제거 */
-}
-
-#final_result th+th
-{
-  border-left: 40px solid transparent;
-  /* 내부 열 사이만 35px 간격처럼 보이게 */
-}
-
-#final_result th:nth-of-type(1)
-{
-  text-align: left;
-}
-
-#final_result th:nth-of-type(2)
-{
-  text-align: center;
 }
 
 #map_table

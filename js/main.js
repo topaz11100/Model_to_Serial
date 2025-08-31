@@ -40,7 +40,8 @@ const Output_UI =
 const Infer_UI =
 {
     btn: document.getElementById("infer_btn"),
-    final_result: document.getElementById("final_result"),
+    max_label: document.getElementById("max_label"),
+    output: document.getElementById("output"),
     infer_result: document.getElementById("infer_result")
 }
 
