@@ -11,7 +11,7 @@
 
   <!-- 라이선스 페이지 -->
   <url>
-    <loc>https://model2serial.netlify.app/licenses.html</loc>
+    <loc>https://model2serial.netlify.app/licenses</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
