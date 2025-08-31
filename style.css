@@ -16,6 +16,8 @@ Copyright 2025 topaz11100
   --cam_size: 200px;
   --cam_cont_border_size: 3px;
 
+  --graph_value_padding: 8px;
+
   --text_shadow_size: 1px;
   --black_text_shadow:
     calc(-1 * var(--text_shadow_size)) calc(-1 * var(--text_shadow_size)) 0 black,
@@ -97,15 +99,9 @@ body
   gap: 0px;
 }
 
-#max_label_cont
+.output
 {
-  padding-right: 8px;
-  justify-content: space-between;
-}
-
-#output_cont
-{
-  padding-right: 8px;
+  padding-right: var(--graph_value_padding);
   justify-content: space-between;
 }
 
@@ -289,7 +285,7 @@ button:disabled
 .bar_label
 {
   position: absolute;
-  left: 8px;
+  left: var(--graph_value_padding);
   /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
   top: 50%;
   transform: translateY(-50%);
@@ -317,7 +313,7 @@ button:disabled
 .bar_value
 {
   position: absolute;
-  right: 8px;
+  right: var(--graph_value_padding);
   /* top : 요소의 "윗변"이 위치할 곳 -> transform으로 중앙선이 위치할 곳으로 바꿔주는 효과 */
   top: 50%;
   transform: translateY(-50%);
