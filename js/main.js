@@ -87,6 +87,9 @@ Model_UI.url.addEventListener("input",    () => { Model_UI.url.scrollLeft = Mode
 //갑자기 시리얼 끊겼을 때
 navigator.serial.addEventListener("disconnect", async () =>
 {
+    //시리얼 연결 상태가 아니면 무시
+    if (dev_state.Serial !== "CON")
+        return;
     //추론 전
     if (infer_state.stop)
     {

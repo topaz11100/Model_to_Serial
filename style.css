@@ -16,6 +16,8 @@ Copyright 2025 topaz11100
   --cam_size: 200px;
   --cam_cont_border_size: 3px;
 
+  --graph_length: 250px;
+
   --graph_value_padding: 8px;
 
   --text_shadow_size: 1px;
@@ -89,6 +91,7 @@ body
 
 #result_cont
 {
+  width: var(--graph_length);
   align-items: stretch;
   gap: 7px;
 }
@@ -103,6 +106,13 @@ body
 {
   padding-right: var(--graph_value_padding);
   justify-content: space-between;
+}
+
+#max_label, #output
+{
+  word-break: break-all;
+  /* 단어가 너무 길면 강제 쪼개기 */
+  white-space: normal;
 }
 
 #stat_connector_cont
@@ -274,7 +284,7 @@ button:disabled
 .bar_cont
 {
   background-color: rgb(225, 225, 225);
-  width: 250px;
+  width: var(--graph_length);
   height: calc(var(--main_font_size) + 3px);
 
   border-radius: 10px;
