@@ -87,18 +87,26 @@ body
 
 #result_cont
 {
-  align-items: flex-start;
-  gap: 10px;
+  align-items: stretch;
+  gap: 7px;
+}
+
+#result_cont_table
+{
+  align-items: stretch;
+  gap: 0px;
 }
 
 #max_label_cont
 {
-  gap: 30px;
+  padding-right: 8px;
+  justify-content: space-between;
 }
 
 #output_cont
 {
-  gap: 50px;
+  padding-right: 8px;
+  justify-content: space-between;
 }
 
 #stat_connector_cont
