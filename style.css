@@ -335,6 +335,11 @@ button:disabled
 
 /* 그래프     ================================================== */
 
+#guide
+{
+  text-align: center;
+}
+
 img
 {
   width: 40px;
