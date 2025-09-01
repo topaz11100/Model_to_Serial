@@ -335,7 +335,7 @@ button:disabled
 
 /* 그래프     ================================================== */
 
-#guide
+.guide
 {
   text-align: center;
 }
