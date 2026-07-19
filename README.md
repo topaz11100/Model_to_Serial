@@ -22,7 +22,8 @@ See the [Licenses & Notices](./licenses.html) page for full license texts.
 
 ---
 
-~~ ## Deployed at [https://model2serial.netlify.app/](https://model2serial.netlify.app/) ~~
+~~## Deployed at [https://model2serial.netlify.app/](https://model2serial.netlify.app/)~~
+
 Deprecated.
 
 ---
